@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 import './App.scss';
 
 function App() {
