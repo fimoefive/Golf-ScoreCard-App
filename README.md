@@ -5,12 +5,13 @@ Use this template to get up and running quickly on projects.
 - [Steps to deploy](https://github.com/nss-nightclass-projects/REACT-Deployment-Netlify)
 
 ## LINKS
-### ERD: https://dbdiagram.io/d/60b6bcbcb29a09603d178d9c
 
-### WireFrame: 
+### [ERD] (https://dbdiagram.io/d/60b6bcbcb29a09603d178d9c)
 
-### NETLIFY:
+### [WireFrame] (https://miro.com/app/board/o9J_lAIAK8I=/)
 
-### LOOM: 
+### [NETLIFY] ()
 
-### SCREEN SHOTS: 
+### [LOOM] ()
+
+### SCREEN SHOTS
