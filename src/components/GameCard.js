@@ -35,7 +35,7 @@ const GameCard = ({
   return (
     <>
       <CardTitle tag="h5">{name}</CardTitle>
-      <CardText>Position: {position}</CardText>
+      <CardText></CardText>
       <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
       <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
       <Button color="info" onClick={() => handleClick('edit')}>

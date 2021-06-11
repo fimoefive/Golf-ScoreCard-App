@@ -36,21 +36,17 @@ const HoleCard = ({
     <>
       <CardTitle tag="h5">{name}</CardTitle>
       <CardText>Position: {position}</CardText>
-      <Button color="warning" onClick={() => handleClick('view')}>View Player</Button>
-      <Button color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
+      <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
+      <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
       <Button color="info" onClick={() => handleClick('edit')}>
         {editing ? 'CloseForm' : 'Edit Hole'}
       </Button>
       {
-        editing && <PlayerForm
-          formTitle='Edit Player'
+        editing && <HoleForm
+          formTitle='Edit Hole'
           uid={uid}
           user={user}
           firebaseKey={firebaseKey}
-          imageUrl={imageUrl}
-          name={name}
-          position={position}
-          setPlayers={setPlayers}
         />
       }
     </>
