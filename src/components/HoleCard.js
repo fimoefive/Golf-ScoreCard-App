@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const GameCard = ({
+const HoleCard = ({
   uid,
   user,
   firebaseKey
@@ -20,7 +20,7 @@ const GameCard = ({
         setEditing((prevState) => !prevState);
         break;
       case 'view':
-        history.push(`/games/${firebaseKey}`);
+        history.push(`/holes/${firebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
@@ -32,10 +32,10 @@ const GameCard = ({
   );
 };
 
-GameCard.propTypes = {
+HoleCard.propTypes = {
   uid: PropTypes.string.isRequired,
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired
 };
 
-export default GameCard;
+export default HoleCard;
