@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import {
+  Button,
+  CardBody,
+  CardText,
+  CardTitle
+} from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const HoleCard = ({
@@ -28,6 +34,25 @@ const HoleCard = ({
   }
   return (
     <>
+      <CardTitle tag="h5">{name}</CardTitle>
+      <CardText>Position: {position}</CardText>
+      <Button color="warning" onClick={() => handleClick('view')}>View Player</Button>
+      <Button color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
+      <Button color="info" onClick={() => handleClick('edit')}>
+        {editing ? 'CloseForm' : 'Edit Hole'}
+      </Button>
+      {
+        editing && <PlayerForm
+          formTitle='Edit Player'
+          uid={uid}
+          user={user}
+          firebaseKey={firebaseKey}
+          imageUrl={imageUrl}
+          name={name}
+          position={position}
+          setPlayers={setPlayers}
+        />
+      }
     </>
   );
 };
