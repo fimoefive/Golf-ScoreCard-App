@@ -5,12 +5,14 @@ import 'firebase/auth';
 import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
+import { getGames } from '../helpers/data/gameData';
 
 import './App.scss';
 
 firebase.initializeApp(firebaseConfig);
 
 function App() {
+  const [games, setGames] = useState([]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -23,6 +25,7 @@ function App() {
           user: authed.email.split('@')[0]
         };
         setUser(userInfoObj);
+        getGames(userInfoObj).then((resp) => setGames(resp));
       } else if (user || user === null) {
         setUser(false);
       }
@@ -36,6 +39,8 @@ function App() {
         <NavBar user={user} />
         <Routes
           user={user}
+          games={games}
+          setGames={setGames}
         />
       </Router>
     </div>
