@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav,
+  NavItem,
+  Button
+} from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
 
 const NavBar = ({ user }) => {

@@ -6,8 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import './styles/index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
 ReactDOM.render(
   <React.Fragment>
     <App />

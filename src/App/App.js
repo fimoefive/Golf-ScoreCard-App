@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseConfig from './helpers/apiKeys';
+import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
 
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h2>GOLF ScoreCard APP</h2>
+      <h2>GOLF APP</h2>
       <Router>
         <NavBar user={user} />
         <Routes
