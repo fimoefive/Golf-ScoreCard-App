@@ -7,11 +7,16 @@ import {
   CardText,
   CardTitle
 } from 'reactstrap';
+import { deleteHole } from '../helpers/data/holeData';
 
 const HoleCard = ({
   uid,
   user,
-  firebaseKey
+  firebaseKey,
+  gameFirebaseKey,
+  roundNum,
+  par,
+  setHoles
 }) => {
   const [editing, setEditing] = useState(false);
   const history = useHistory();
@@ -35,8 +40,8 @@ const HoleCard = ({
   return (
     <>
       <CardBody body="true" className="card text-center" id={uid}>
-        <CardTitle tag="h5">{name}</CardTitle>
-        <CardText>Position: {position}</CardText>
+        <CardTitle tag="h5">{roundNum}</CardTitle>
+        <CardText>Position: {par}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -45,9 +50,13 @@ const HoleCard = ({
         {
           editing && <HoleForm
             formTitle='Edit Hole'
+            firebaseKey={firebaseKey}
             uid={uid}
             user={user}
-            firebaseKey={firebaseKey}
+            gameFirebaseKey={gameFirebaseKey}
+            roundNum={roundNum}
+            par={par}
+            setHoles={setHoles}
           />
         }
       </CardBody>
@@ -58,7 +67,11 @@ const HoleCard = ({
 HoleCard.propTypes = {
   uid: PropTypes.string.isRequired,
   user: PropTypes.any,
-  firebaseKey: PropTypes.string.isRequired
+  firebaseKey: PropTypes.string.isRequired,
+  gameFirebaseKey: PropTypes.string.isRequired,
+  roundNum: PropTypes.number,
+  par: PropTypes.number,
+  setHoles: PropTypes.func
 };
 
 export default HoleCard;

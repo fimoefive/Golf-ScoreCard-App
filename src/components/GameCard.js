@@ -51,9 +51,9 @@ const GameCard = ({
         {
           editing && <GameForm
             formTitle='Edit Game'
+            gameFirebaseKey={gameFirebaseKey}
             uid={uid}
             user={user}
-            gameFirebaseKey={gameFirebaseKey}
             name={name}
             date={date}
             setGames={setGames}
