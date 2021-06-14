@@ -1,19 +1,19 @@
 {
   "-Mc0U0LF7GpEX6yJvYu2": {
     "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "user_firebaseKey": 1,
+    "uid": 1,
     "name": "Anthony",
     "date": "2/1/2021"
   },
   "-Mc0U0LGF1u-91nHkWZb": {
     "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "user_firebaseKey": 1,
+    "uid": 1,
     "name": "Hercules",
     "date": "12/30/2020"
   },
   "-Mc0U0LH58GiknTFy4tu": {
     "gameFirebaseKey": "-Mc0U0LH58GiknTFy4tu",
-    "user_firebaseKey": 2,
+    "uid": 2,
     "name": "Jo",
     "date": "11/2/2020"
   }
