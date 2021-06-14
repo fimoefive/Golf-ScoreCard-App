@@ -29,7 +29,7 @@ function Games({ user, games, setGames }) {
         {games.map((gameInfo) => (
           <GameCard
             key={gameInfo.gameFirebaseKey}
-            firebaseKey={gameInfo.gameFirebaseKey}
+            gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
             // uid={gameInfo.uid}

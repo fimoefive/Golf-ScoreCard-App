@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import Main from '../views/MainPage';
 import Games from '../views/Games';
+import SingleGame from '../views/SingleGame';
 
 function Routes({ user, games, setGames }) {
   return (
@@ -17,6 +18,11 @@ function Routes({ user, games, setGames }) {
               user={user}
               games={games}
               setGames={setGames} />}
+          />
+          <Route
+            user={user}
+            path='/games/:gameFirebaseKey'
+            component={SingleGame}
           />
           <Route
             exact
