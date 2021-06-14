@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
-
+  CardBody,
   CardText,
   CardTitle
 } from 'reactstrap';
@@ -40,7 +40,7 @@ const GameCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" key={firebaseKey} id={uid}>
+      <CardBody body="true" className="card text-center" key={game_firebaseKey} id={uid}>
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText></CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
@@ -70,7 +70,7 @@ GameCard.propTypes = {
   game_firebaseKey: PropTypes.string.isRequired,
   name: PropTypes.string,
   date: PropTypes.date,
-  setGames: PropTypes, func
+  setGames: PropTypes.func
 };
 
 export default GameCard;
