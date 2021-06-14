@@ -40,7 +40,7 @@ const GameCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" key={gameFirebaseKey}>
+      <CardBody body="true" className="card text-center">
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText></CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
@@ -67,9 +67,9 @@ const GameCard = ({
 GameCard.propTypes = {
   // uid: PropTypes.string.isRequired,
   user: PropTypes.any,
-  gameFirebaseKey: PropTypes.string.isRequired,
+  gameFirebaseKey: PropTypes.string,
   name: PropTypes.string,
-  date: PropTypes.date,
+  date: PropTypes.string,
   setGames: PropTypes.func
 };
 

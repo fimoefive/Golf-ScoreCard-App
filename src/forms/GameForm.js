@@ -14,7 +14,7 @@ const GameForm = ({
 }) => {
   const [game, setGame] = useState({
     name: name || '',
-    date: date || null,
+    date: date || '',
     gameFirebaseKey: gameFirebaseKey || null,
     uid: uid || user.uid
   });
@@ -89,7 +89,7 @@ GameForm.propTypes = {
   setGames: PropTypes.func,
   gameFirebaseKey: PropTypes.string,
   name: PropTypes.string,
-  date: PropTypes.any,
+  date: PropTypes.string,
   uid: PropTypes.string,
   user: PropTypes.any
 };

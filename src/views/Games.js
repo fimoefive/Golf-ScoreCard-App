@@ -28,11 +28,11 @@ function Games({ user, games, setGames }) {
         </div>
         {games.map((gameInfo) => (
           <GameCard
-            key={gameInfo.game_firebaseKey}
-            firebaseKey={gameInfo.game_firebaseKey}
+            key={gameInfo.gameFirebaseKey}
+            firebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
-            uid={gameInfo.uid}
+            // uid={gameInfo.uid}
             user={user}
             setGames={setGames}
           />
