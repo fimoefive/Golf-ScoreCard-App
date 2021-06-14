@@ -6,7 +6,6 @@ import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
 import { getGames } from '../helpers/data/gameData';
-
 import './App.scss';
 
 firebase.initializeApp(firebaseConfig);

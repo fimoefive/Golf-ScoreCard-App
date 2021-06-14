@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { addGame, updateGame } from '../helpers/data/gameData';
 
 const GameForm = ({
+  formTitle,
   setGames,
   name,
   date,
@@ -31,7 +32,7 @@ const GameForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (game.gameFirebaseKey) {
-      updateGame(game, user).then((gameArray) => setGame(gameArray));
+      updateGame(game, user).then((gameArray) => setGames(gameArray));
     } else {
       addGame(game, user).then((response) => {
         setGames(response);
@@ -49,43 +50,48 @@ const GameForm = ({
 
   return (
     <>
-      <form
-        id='game-form'
-        autoComplete='off'
-        onSubmit={handleSubmit}
-      >
-        <div>
-          <label htmlFor="name">Name: </label>
-          <input
-            name='name'
-            id='name'
-            value={game.name}
-            type='text'
-            placeholder='Enter a Name'
-            onChange={handleInputChange}
-          />
-        </div>
+      <div className='game-form'>
+        <form
+          id='addGameForm'
+          autoComplete='off'
+          onSubmit={handleSubmit}
+        >
+          <h2>{formTitle}</h2>
+          <div>
+            <label htmlFor="name">Name: </label>
+            <input
+              name='name'
+              id='name'
+              value={game.name}
+              type='text'
+              placeholder='Enter a Name'
+              onChange={handleInputChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor="date">Date: </label>
-          <input
-            name='date'
-            id='date'
-            value={game.date}
-            type='text'
-            onChange={handleInputChange}
-          />
-        </div>
+          <div>
+            <label htmlFor="date">Date: </label>
+            <input
+              name='date'
+              id='date'
+              value={game.date}
+              type='text'
+              placeholder='Enter Date'
+              onChange={handleInputChange}
+            />
+          </div>
 
-        <div>
-          <Button className="gameSubmit" color="success" type='submit'>Submit</Button>
-        </div>
-      </form>
+          <div>
+            <Button className="gameSubmit" color="success" type='submit'>Submit</Button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };
 
 GameForm.propTypes = {
+  formTitle: PropTypes.string.isRequired,
   setGames: PropTypes.func,
   gameFirebaseKey: PropTypes.string,
   name: PropTypes.string,

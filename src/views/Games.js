@@ -32,7 +32,7 @@ function Games({ user, games, setGames }) {
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
-            // uid={gameInfo.uid}
+            uid={gameInfo.uid}
             user={user}
             setGames={setGames}
           />
