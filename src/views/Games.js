@@ -16,7 +16,7 @@ function Games({ user, games, setGames }) {
       <div className="game-container">
         <div>
           {!showAddGame
-            ? <Button className="addGameBtn" color="primary" onClick={handleClick}>ADD GAME</Button>
+            ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD GAME</Button>
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <GameForm
