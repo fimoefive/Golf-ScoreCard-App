@@ -19,19 +19,17 @@ const addHole = (hole, user) => new Promise((resolve, reject) => {
         });
     }).catch((error) => reject(error));
 });
-
 const deleteHole = (firebaseKey, user) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/holes/${firebaseKey}.json`)
-    .then(() => getHoles(user).then((orgArray) => resolve(orgArray)))
+    .then(() => getHoles(user).then((holeArray) => resolve(holeArray)))
     .catch((error) => reject(error));
 });
 
-const deleteHole, updateHole
-  = (hole, user) => new Promise((resolve, reject) => {
-    axios.patch(`${dbUrl}/holes/${hole.firebaseKey}.json`, hole)
-      .then(() => getHoles(user).then(resolve))
-      .catch((error) => reject(error));
-  });
+const updateHole = (holes, user) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/holes/${holes.firebaseKey}.json`, holes)
+    .then(() => getHoles(user).then(resolve))
+    .catch((error) => reject(error));
+});
 
 export {
   getHoles, addHole,
