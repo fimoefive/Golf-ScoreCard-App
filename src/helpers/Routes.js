@@ -1,9 +1,11 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
 import Main from '../views/MainPage';
+import Games from '../views/Games';
+import SingleGame from '../views/SingleGame';
 
-function Routes({ user }) {
+function Routes({ user, games, setGames }) {
   return (
     <>
       <div>
@@ -12,11 +14,20 @@ function Routes({ user }) {
           <Route
             exact
             path='/games'
+            component={() => <Games
+              user={user}
+              games={games}
+              setGames={setGames} />}
+          />
+          <Route
             user={user}
+            path='/games/:gameFirebaseKey'
+            component={SingleGame}
           />
           <Route
             exact
             path='/holes'
+
             user={user}
           />
           <Route path='*' component={Main} />
@@ -27,6 +38,8 @@ function Routes({ user }) {
 }
 
 Routes.propTypes = {
+  games: PropTypes.array.isRequired,
+  setGames: PropTypes.func.isRequired,
   user: PropTypes.any
 };
 
