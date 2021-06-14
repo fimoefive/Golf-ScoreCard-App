@@ -96,9 +96,9 @@ const GameForm = ({
 GameForm.propTypes = {
   formTitle: PropTypes.string,
   setHoles: PropTypes.func,
-  gameFirebaseKey: PropTypes.string,
-  name: PropTypes.string,
-  date: PropTypes.string,
+  firebaseKey: PropTypes.string,
+  roundNum: PropTypes.string,
+  par: PropTypes.string,
   uid: PropTypes.string,
   user: PropTypes.any
 };

@@ -8,6 +8,7 @@ import {
   CardTitle
 } from 'reactstrap';
 import { deleteHole } from '../helpers/data/holeData';
+import HoleForm from '../forms/HoleForm';
 
 const HoleCard = ({
   uid,
@@ -36,7 +37,8 @@ const HoleCard = ({
       default:
         console.warn('nothing selected');
     }
-  }
+  };
+
   return (
     <>
       <CardBody body="true" className="card text-center" id={uid}>
