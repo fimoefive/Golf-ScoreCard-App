@@ -13,7 +13,7 @@ function Games({ user, games, setGames }) {
 
   return (
     <>
-      <div className="card-container">
+      <div className="game-container">
         <div>
           {!showAddGame
             ? <Button className="addGameBtn" color="primary" onClick={handleClick}>ADD GAME</Button>
@@ -27,7 +27,7 @@ function Games({ user, games, setGames }) {
           }
         </div>
         {games.map((gameInfo) => (
-          <GameCard
+          <GameCard className="gameCard"
             key={gameInfo.gameFirebaseKey}
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}

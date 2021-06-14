@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import {
+  Button, Form,
+  FormGroup, Label, Input
+} from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { addGame, updateGame } from '../helpers/data/gameData';
 
@@ -51,15 +54,15 @@ const GameForm = ({
   return (
     <>
       <div className='game-form'>
-        <form
+        <Form
           id='addGameForm'
           autoComplete='off'
           onSubmit={handleSubmit}
         >
           <h2>{formTitle}</h2>
-          <div>
-            <label htmlFor="name">Name: </label>
-            <input
+          <FormGroup>
+            <Label htmlFor="name">Name: </Label>
+            <Input
               name='name'
               id='name'
               value={game.name}
@@ -67,11 +70,11 @@ const GameForm = ({
               placeholder='Enter a Name'
               onChange={handleInputChange}
             />
-          </div>
+          </FormGroup>
 
-          <div>
-            <label htmlFor="date">Date: </label>
-            <input
+          <FormGroup>
+            <Label htmlFor="date">Date: </Label>
+            <Input
               name='date'
               id='date'
               value={game.date}
@@ -79,19 +82,19 @@ const GameForm = ({
               placeholder='Enter Date'
               onChange={handleInputChange}
             />
-          </div>
+          </FormGroup>
 
           <div>
             <Button className="gameSubmit" color="success" type='submit'>Submit</Button>
           </div>
-        </form>
+        </Form>
       </div>
     </>
   );
 };
 
 GameForm.propTypes = {
-  formTitle: PropTypes.string.isRequired,
+  formTitle: PropTypes.string,
   setGames: PropTypes.func,
   gameFirebaseKey: PropTypes.string,
   name: PropTypes.string,
