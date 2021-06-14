@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import { addGame, updateGame } from '../helpers/data/GameData';
+import { addGame, updateGame } from '../helpers/data/gameData';
 
 const GameForm = ({
   setGames,
   name,
   date,
-  game_firebaseKey,
+  gameFirebaseKey,
   user,
   uid
 }) => {
   const [game, setGame] = useState({
     name: name || '',
     date: date || null,
-    game_firebaseKey: game_firebaseKey || null,
+    gameFirebaseKey: gameFirebaseKey || null,
     uid: uid || user.uid
   });
 
@@ -29,7 +30,7 @@ const GameForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (game.game_firebaseKey) {
+    if (game.gameFirebaseKey) {
       updateGame(game, user).then((gameArray) => setGame(gameArray));
     } else {
       addGame(game, user).then((response) => {
@@ -41,7 +42,7 @@ const GameForm = ({
       setGame({
         name: '',
         date: '',
-        game_firebaseKey: null
+        gameFirebaseKey: null
       });
     }
   };
@@ -77,7 +78,7 @@ const GameForm = ({
         </div>
 
         <div>
-          <button className="gameSubmit" type='submit'>Submit</button>
+          <Button className="gameSubmit" color="success" type='submit'>Submit</Button>
         </div>
       </form>
     </>
@@ -86,7 +87,7 @@ const GameForm = ({
 
 GameForm.propTypes = {
   setGames: PropTypes.func,
-  game_firebaseKey: PropTypes.string,
+  gameFirebaseKey: PropTypes.string,
   name: PropTypes.string,
   date: PropTypes.any,
   uid: PropTypes.string,

@@ -11,9 +11,9 @@ import { deleteGame } from '../helpers/data/gameData';
 import GameForm from '../forms/GameForm';
 
 const GameCard = ({
-  uid,
+  // uid,
   user,
-  game_firebaseKey,
+  gameFirebaseKey,
   name,
   date,
   setGames
@@ -24,14 +24,14 @@ const GameCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteGame(game_firebaseKey, user)
+        deleteGame(gameFirebaseKey, user)
           .then(setGames);
         break;
       case 'edit':
         setEditing((prevState) => !prevState);
         break;
       case 'view':
-        history.push(`/games/${game_firebaseKey}`);
+        history.push(`/games/${gameFirebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
@@ -40,7 +40,7 @@ const GameCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" key={game_firebaseKey} id={uid}>
+      <CardBody body="true" className="card text-center" key={gameFirebaseKey}>
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText></CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
@@ -51,9 +51,9 @@ const GameCard = ({
         {
           editing && <GameForm
             formTitle='Edit Game'
-            uid={uid}
+            // uid={uid}
             user={user}
-            game_firebaseKey={game_firebaseKey}
+            gameFirebaseKey={gameFirebaseKey}
             name={name}
             date={date}
             setGames={setGames}
@@ -65,9 +65,9 @@ const GameCard = ({
 };
 
 GameCard.propTypes = {
-  uid: PropTypes.string.isRequired,
+  // uid: PropTypes.string.isRequired,
   user: PropTypes.any,
-  game_firebaseKey: PropTypes.string.isRequired,
+  gameFirebaseKey: PropTypes.string.isRequired,
   name: PropTypes.string,
   date: PropTypes.date,
   setGames: PropTypes.func
