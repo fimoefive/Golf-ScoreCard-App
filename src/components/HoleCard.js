@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import {
   Button,
   CardBody,
-  CardText,
   CardTitle
 } from 'reactstrap';
 import { deleteHole } from '../helpers/data/holeData';
@@ -42,8 +41,8 @@ const HoleCard = ({
   return (
     <>
       <CardBody body="true" className="card text-center" id={uid}>
-        <CardTitle tag="h5">{roundNum}</CardTitle>
-        <CardText>Position: {par}</CardText>
+        <CardTitle tag="h5">ROUND: {roundNum}</CardTitle>
+        <div>Par: {par}</div>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -71,7 +70,7 @@ HoleCard.propTypes = {
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   gameFirebaseKey: PropTypes.string,
-  roundNum: PropTypes.number.isRequired,
+  roundNum: PropTypes.number,
   par: PropTypes.number,
   setHoles: PropTypes.func
 };

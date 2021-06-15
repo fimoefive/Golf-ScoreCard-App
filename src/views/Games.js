@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+import { getGames } from '../helpers/data/gameData';
 import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
 
-function Games({ user, games, setGames }) {
+function Games({ user }) {
   const [showAddGame, setAddGame] = useState(false);
+  const [games, setGames] = useState([]);
 
   const handleClick = () => {
     setAddGame((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    getGames().then(setGames);
+  }, []);
 
   return (
     <>
@@ -34,6 +40,7 @@ function Games({ user, games, setGames }) {
             date={gameInfo.date}
             uid={gameInfo.uid}
             user={user}
+            // games={games}
             setGames={setGames}
           />
         ))}
@@ -43,8 +50,8 @@ function Games({ user, games, setGames }) {
 }
 
 Games.propTypes = {
-  games: PropTypes.array.isRequired,
-  setGames: PropTypes.func.isRequired,
+  games: PropTypes.array,
+  setGames: PropTypes.func,
   user: PropTypes.any
 };
 
