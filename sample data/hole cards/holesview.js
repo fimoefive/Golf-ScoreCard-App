@@ -1,3 +1,4 @@
+/* HOLES() from Holes.js
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
@@ -36,16 +37,8 @@ function Holes({ user }) {
           <HoleCard className="holeCard"
             key={holeInfo.firebaseKey}
             firebaseKey={holeInfo.firebaseKey}
-            course={holeInfo.course}
-            hole1={holeInfo.hole1}
-            hole2={holeInfo.hole2}
-            hole3={holeInfo.hole3}
-            hole4={holeInfo.hole4}
-            hole5={holeInfo.hole5}
-            hole6={holeInfo.hole6}
-            hole7={holeInfo.hole7}
-            hole8={holeInfo.hole8}
-            hole9={holeInfo.hole9}
+            roundNum={holeInfo.roundNum}
+            par={holeInfo.par}
             uid={holeInfo.uid}
             user={user}
             setHoles={setHoles}
@@ -63,3 +56,4 @@ Holes.propTypes = {
 };
 
 export default Holes;
+*/
