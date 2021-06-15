@@ -6,14 +6,14 @@ import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
 // import { getGames } from '../helpers/data/gameData';
-import { getHoles } from '../helpers/data/holeData';
+// import { getHoles } from '../helpers/data/holeData';
 import './App.scss';
 
 firebase.initializeApp(firebaseConfig);
 
 function App() {
   // const [games, setGames] = useState([]);
-  const [holes, setHoles] = useState([]);
+  // const [holes, setHoles] = useState([]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
         };
         setUser(userInfoObj);
         // getGames(userInfoObj).then((resp) => setGames(resp));
-        getHoles(userInfoObj).then((resp) => setHoles(resp));
+        // getHoles(userInfoObj).then((resp) => setHoles(resp));
       } else if (user || user === null) {
         setUser(false);
       }
@@ -41,8 +41,8 @@ function App() {
         <NavBar user={user} />
         <Routes
           user={user}
-          holes={holes}
-          setHoles={setHoles}
+        // holes={holes}
+        // setHoles={setHoles}
         // games={games}
         // setGames={setGames}
         />

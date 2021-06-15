@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {
   Button,
   CardBody,
+  CardText,
   CardTitle
 } from 'reactstrap';
 import { deleteHole } from '../helpers/data/holeData';
@@ -42,7 +43,7 @@ const HoleCard = ({
     <>
       <CardBody body="true" className="card text-center" id={uid}>
         <CardTitle tag="h5">ROUND: {roundNum}</CardTitle>
-        <div>Par: {par}</div>
+        <CardText>Par: {par}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>

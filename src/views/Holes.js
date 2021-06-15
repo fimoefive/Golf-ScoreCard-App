@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+import { getHoles } from '../helpers/data/holeData';
 import HoleCard from '../components/HoleCard';
 import HoleForm from '../forms/HoleForm';
 
-function Holes({ user, holes, setHoles }) {
+function Holes({ user }) {
+  const [holes, setHoles] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
   const handleClick = () => {
     setAddHole((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    getHoles().then(setHoles);
+  }, []);
 
   return (
     <>
