@@ -53,10 +53,10 @@ function Routes({
 }
 
 Routes.propTypes = {
-  games: PropTypes.array.isRequired,
-  setGames: PropTypes.func.isRequired,
-  holes: PropTypes.array.isRequired,
-  setHoles: PropTypes.func.isRequired,
+  games: PropTypes.array,
+  setGames: PropTypes.func,
+  holes: PropTypes.array,
+  setHoles: PropTypes.func,
   user: PropTypes.any
 };
 

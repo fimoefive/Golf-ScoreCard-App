@@ -5,15 +5,11 @@ import 'firebase/auth';
 import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
-import { getGames } from '../helpers/data/gameData';
-import { getHoles } from '../helpers/data/holeData';
 import './App.scss';
 
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [games, setGames] = useState([]);
-  const [holes, setHoles] = useState([]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -26,8 +22,6 @@ function App() {
           user: authed.email.split('@')[0]
         };
         setUser(userInfoObj);
-        getGames(userInfoObj).then((resp) => setGames(resp));
-        getHoles(userInfoObj).then((resp) => setHoles(resp));
       } else if (user || user === null) {
         setUser(false);
       }
@@ -39,13 +33,7 @@ function App() {
       <h2>GOLF APP</h2>
       <Router>
         <NavBar user={user} />
-        <Routes
-          user={user}
-          holes={holes}
-          setHoles={setHoles}
-          games={games}
-          setGames={setGames}
-        />
+        <Routes user={user} />
       </Router>
     </div>
   );

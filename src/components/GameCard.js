@@ -42,7 +42,7 @@ const GameCard = ({
     <>
       <CardBody body="true" className="card text-center" id={uid}>
         <CardTitle tag="h5">{name}</CardTitle>
-        <CardText>{date}</CardText>
+        <CardText>Date: {date}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
         <Button color="info" onClick={() => handleClick('edit')}>

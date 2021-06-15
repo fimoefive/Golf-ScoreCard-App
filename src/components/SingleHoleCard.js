@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function SingleHoleCard({ children, hole }) {
+function SingleHoleCard({ hole }) {
   return (
     <div>
-      <h2>Hole: {hole.name}</h2>
-      {children}
+      <h1>Hole</h1>
+      <h2>ROUND: {hole.roundNum}</h2>
+      <h2>PAR: {hole.par}</h2>
       <footer>&#169; 2021</footer>
     </div>
   );
