@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [games, setGames] = useState([]);
-  const [holes, setHoles] = useState(null);
+  const [holes, setHoles] = useState([]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {

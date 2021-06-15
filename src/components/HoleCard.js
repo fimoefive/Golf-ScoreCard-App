@@ -67,10 +67,10 @@ const HoleCard = ({
 };
 
 HoleCard.propTypes = {
-  uid: PropTypes.string.isRequired,
+  uid: PropTypes.string,
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
-  gameFirebaseKey: PropTypes.string.isRequired,
+  gameFirebaseKey: PropTypes.string,
   roundNum: PropTypes.number,
   par: PropTypes.number,
   setHoles: PropTypes.func

@@ -4,8 +4,15 @@ import { Route, Switch } from 'react-router-dom';
 import Main from '../views/MainPage';
 import Games from '../views/Games';
 import SingleGame from '../views/SingleGame';
+import Holes from '../views/Holes';
 
-function Routes({ user, games, setGames }) {
+function Routes({
+  user,
+  games,
+  setGames,
+  holes,
+  setHoles
+}) {
   return (
     <>
       <div>
@@ -27,8 +34,10 @@ function Routes({ user, games, setGames }) {
           <Route
             exact
             path='/holes'
-
-            user={user}
+            component={() => <Holes
+              user={user}
+              holes={holes}
+              setHoles={setHoles} />}
           />
           <Route path='*' component={Main} />
         </Switch>
@@ -40,6 +49,8 @@ function Routes({ user, games, setGames }) {
 Routes.propTypes = {
   games: PropTypes.array.isRequired,
   setGames: PropTypes.func.isRequired,
+  holes: PropTypes.array.isRequired,
+  setHoles: PropTypes.func.isRequired,
   user: PropTypes.any
 };
 

@@ -97,8 +97,8 @@ GameForm.propTypes = {
   formTitle: PropTypes.string,
   setHoles: PropTypes.func,
   firebaseKey: PropTypes.string,
-  roundNum: PropTypes.string,
-  par: PropTypes.string,
+  roundNum: PropTypes.number,
+  par: PropTypes.number,
   uid: PropTypes.string,
   user: PropTypes.any
 };

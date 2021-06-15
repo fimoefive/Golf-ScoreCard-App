@@ -13,10 +13,10 @@ function Holes({ user, holes, setHoles }) {
 
   return (
     <>
-      <div className="card-container">
+      <div className="hole-container">
         <div>
           {!showAddHole
-            ? <Button className="addHoleBtn" color="primary" user={user} onClick={handleClick}>ADD HOLE</Button>
+            ? <Button className="addHoleBtn" color="primary" onClick={handleClick}>ADD HOLE</Button>
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <HoleForm
@@ -43,8 +43,8 @@ function Holes({ user, holes, setHoles }) {
 }
 
 Holes.propTypes = {
-  holes: PropTypes.array.isRequired,
-  setHoles: PropTypes.func.isRequired,
+  holes: PropTypes.array,
+  setHoles: PropTypes.func,
   user: PropTypes.any
 };
 
