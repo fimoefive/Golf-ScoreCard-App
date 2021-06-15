@@ -93,22 +93,12 @@ const HoleForm = ({
   );
 };
 
-// HoleForm.propTypes = {
-//   formTitle: PropTypes.string,
-//   setHoles: PropTypes.func,
-//   firebaseKey: PropTypes.string,
-//   roundNum: PropTypes.number,
-//   par: PropTypes.number,
-//   uid: PropTypes.string,
-//   user: PropTypes.any
-// };
-
 HoleForm.propTypes = {
   formTitle: PropTypes.string,
   setHoles: PropTypes.func,
   firebaseKey: PropTypes.string,
   roundNum: PropTypes.number,
-  par: PropTypes.number.isRequired,
+  par: PropTypes.number,
   uid: PropTypes.string,
   user: PropTypes.any
 };

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function SingleGameCard({ children, game }) {
+function SingleGameCard({ game }) {
   return (
     <div>
-      <h2>Game: {game.name}</h2>
-      {children}
+      <h1>Game</h1>
+      <h2>NAME: {game.name}</h2>
+      <h2>DATE: {game.date}</h2>
       <footer>&#169; 2021</footer>
     </div>
   );
