@@ -5,6 +5,7 @@ import Main from '../views/MainPage';
 import Games from '../views/Games';
 import SingleGame from '../views/SingleGame';
 import Holes from '../views/Holes';
+import SingleHole from '../views/SingleHole';
 
 function Routes({
   user,
@@ -38,6 +39,11 @@ function Routes({
               user={user}
               holes={holes}
               setHoles={setHoles} />}
+          />
+          <Route
+            user={user}
+            path='/holes/:firebaseKey'
+            component={SingleHole}
           />
           <Route path='*' component={Main} />
         </Switch>

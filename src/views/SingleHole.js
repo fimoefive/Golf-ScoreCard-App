@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SingleHoleCard from '../components/SingleHoleCard';
-import { getSingleGame } from '../helpers/data/gameData';
+import { getSingleHole } from '../helpers/data/holeData';
 
 function SingleHole() {
   const [hole, setHole] = useState({});
   const { firebaseKey } = useParams();
 
   useEffect(() => {
-    getSingleGame(firebaseKey).then(setHole);
+    getSingleHole(firebaseKey).then(setHole);
   }, []);
 
   return (
