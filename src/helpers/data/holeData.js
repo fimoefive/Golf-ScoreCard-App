@@ -31,7 +31,13 @@ const updateHole = (holes, user) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleHole = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/holes/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 export {
   getHoles, addHole,
-  deleteHole, updateHole
+  deleteHole, updateHole,
+  getSingleHole
 };
