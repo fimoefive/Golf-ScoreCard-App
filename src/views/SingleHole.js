@@ -24,6 +24,8 @@ function SingleHole() {
         <h2>{hole.hole7}</h2>
         <h2>{hole.hole8}</h2>
         <h2>{hole.hole9}</h2>
+        <h2>{hole.total}</h2>
+        <h2>{hole.avg}</h2>
       </SingleHoleCard>
     </div>
   );
