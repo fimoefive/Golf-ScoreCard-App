@@ -6,8 +6,10 @@ import HoleCard from '../components/HoleCard';
 import HoleForm from '../forms/HoleForm';
 
 function Holes({ user }) {
-  const [holes, setHoles] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
+  const [holes, setHoles] = useState([]);
+  const [total, setTotal] = useState([]);
+  const [average, setAverage] = useState([]);
 
   const handleClick = () => {
     setAddHole((prevState) => !prevState);
@@ -59,6 +61,10 @@ function Holes({ user }) {
 Holes.propTypes = {
   holes: PropTypes.array,
   setHoles: PropTypes.func,
+  total: PropTypes.array,
+  setTotal: PropTypes.func,
+  average: PropTypes.array,
+  setAverage: PropTypes.func,
   user: PropTypes.any
 };
 
