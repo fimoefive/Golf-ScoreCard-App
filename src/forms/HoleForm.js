@@ -7,7 +7,7 @@ import {
 import { useHistory } from 'react-router-dom';
 import { addHole, updateHole } from '../helpers/data/holeData';
 
-const GameForm = ({
+const HoleForm = ({
   formTitle,
   setHoles,
   roundNum,
@@ -61,12 +61,12 @@ const GameForm = ({
         >
           <h2>{formTitle}</h2>
           <FormGroup>
-            <Label htmlFor="round">Round: </Label>
+            <Label htmlFor="roundNum">Round: </Label>
             <Input
-              name='round'
-              id='round'
+              name='roundNum'
+              id='roundNum'
               value={hole.roundNum}
-              type='text'
+              type='number'
               placeholder='Enter Round'
               onChange={handleInputChange}
             />
@@ -78,7 +78,7 @@ const GameForm = ({
               name='par'
               id='par'
               value={hole.par}
-              type='text'
+              type='number'
               placeholder='Enter Par'
               onChange={handleInputChange}
             />
@@ -93,7 +93,7 @@ const GameForm = ({
   );
 };
 
-GameForm.propTypes = {
+HoleForm.propTypes = {
   formTitle: PropTypes.string,
   setHoles: PropTypes.func,
   firebaseKey: PropTypes.string,
@@ -103,4 +103,4 @@ GameForm.propTypes = {
   user: PropTypes.any
 };
 
-export default GameForm;
+export default HoleForm;
