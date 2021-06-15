@@ -10,7 +10,7 @@ import { addHole, updateHole } from '../helpers/data/holeData';
 const HoleForm = ({
   formTitle,
   setHoles,
-  title,
+  course,
   hole1,
   hole2,
   hole3,
@@ -25,7 +25,7 @@ const HoleForm = ({
   uid
 }) => {
   const [hole, setHole] = useState({
-    title: title || '',
+    course: course || '',
     hole1: hole1 || '',
     hole2: hole2 || '',
     hole3: hole3 || '',
@@ -60,7 +60,7 @@ const HoleForm = ({
 
       // Clears Input Fields
       setHole({
-        title: '',
+        course: '',
         hole1: '',
         hole2: '',
         hole3: '',
@@ -85,13 +85,13 @@ const HoleForm = ({
         >
           <h2>{formTitle}</h2>
           <FormGroup>
-            <Label htmlFor="title"></Label>
+            <Label htmlFor="course">Course: </Label>
             <Input
-              name='title'
-              id='title'
-              value={hole.title}
+              name='course'
+              id='course'
+              value={hole.course}
               type='text'
-              placeholder='Enter Title'
+              placeholder='Enter Course'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -209,8 +209,7 @@ HoleForm.propTypes = {
   formTitle: PropTypes.string,
   setHoles: PropTypes.func,
   firebaseKey: PropTypes.string,
-  title: PropTypes.string,
-  hole1: PropTypes.number,
+  course: PropTypes.string,
   hole1: PropTypes.number,
   hole2: PropTypes.number,
   hole3: PropTypes.number,
