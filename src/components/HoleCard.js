@@ -71,8 +71,8 @@ HoleCard.propTypes = {
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   gameFirebaseKey: PropTypes.string,
-  roundNum: PropTypes.number,
-  par: PropTypes.number,
+  roundNum: PropTypes.number.isRequired,
+  par: PropTypes.number.isRequired,
   setHoles: PropTypes.func
 };
 

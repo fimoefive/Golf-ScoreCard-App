@@ -97,8 +97,8 @@ HoleForm.propTypes = {
   formTitle: PropTypes.string,
   setHoles: PropTypes.func,
   firebaseKey: PropTypes.string,
-  roundNum: PropTypes.number,
-  par: PropTypes.number,
+  roundNum: PropTypes.number.isRequired,
+  par: PropTypes.number.isRequired,
   uid: PropTypes.string,
   user: PropTypes.any
 };

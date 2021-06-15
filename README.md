@@ -6,14 +6,12 @@ Use this template to get up and running quickly on projects.
 
 ## LINKS
 
-
 ### [ERD](https://dbdiagram.io/d/60b6bcbcb29a09603d178d9c)
-
 
 ### [WireFrame](https://miro.com/app/board/o9J_lAIAK8I=/)
 
-### [NETLIFY] ()
+### [NETLIFY]()
 
-### [LOOM] ()
+### [LOOM]()
 
 ### SCREEN SHOTS
