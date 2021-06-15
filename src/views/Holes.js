@@ -16,7 +16,7 @@ function Holes({ user, holes, setHoles }) {
       <div className="hole-container">
         <div>
           {!showAddHole
-            ? <Button className="addHoleBtn" color="primary" onClick={handleClick}>ADD HOLE</Button>
+            ? <Button className="addHoleBtn" color="primary" user={user} onClick={handleClick}>ADD HOLE</Button>
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <HoleForm
