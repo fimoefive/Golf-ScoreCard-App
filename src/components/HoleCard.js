@@ -5,7 +5,7 @@ import {
   Button,
   CardBody,
   CardText,
-  CardTitle
+  CardTitle,
 } from 'reactstrap';
 import { deleteHole } from '../helpers/data/holeData';
 import HoleForm from '../forms/HoleForm';
@@ -53,15 +53,24 @@ const HoleCard = ({
     <>
       <CardBody body="true" className="card text-center" id={uid}>
         <CardTitle tag="h5" type="text">Course: {course}</CardTitle>
-        <CardText type="number">Hole 1: {hole1}</CardText>
-        <CardText type="number">Hole 2: {hole2}</CardText>
-        <CardText type="number">Hole 3: {hole3}</CardText>
-        <CardText type="number">Hole 4: {hole4}</CardText>
-        <CardText type="number">Hole 5: {hole5}</CardText>
-        <CardText type="number">Hole 6: {hole6}</CardText>
-        <CardText type="number">Hole 7: {hole7}</CardText>
-        <CardText type="number">Hole 8: {hole8}</CardText>
-        <CardText type="number">Hole 9: {hole9}</CardText>
+        <CardText type="number">Hole 1</CardText>
+        <CardText type="number">Par: {hole1}</CardText>
+        <CardText type="number">Hole 2</CardText>
+        <CardText type="number">Par: {hole2}</CardText>
+        <CardText type="number">Hole 3</CardText>
+        <CardText type="number">Par: {hole3}</CardText>
+        <CardText type="number">Hole 4</CardText>
+        <CardText type="number">Par: {hole4}</CardText>
+        <CardText type="number">Hole 5</CardText>
+        <CardText type="number">Par: {hole5}</CardText>
+        <CardText type="number">Hole 6</CardText>
+        <CardText type="number">Par: {hole6}</CardText>
+        <CardText type="number">Hole 7</CardText>
+        <CardText type="number">Par: {hole7}</CardText>
+        <CardText type="number">Hole 8</CardText>
+        <CardText type="number">Par: {hole8}</CardText>
+        <CardText type="number">Hole 9</CardText>
+        <CardText type="number">Par: {hole9}</CardText>
         <CardText type="number">Total: {total}</CardText>
         <CardText type="number">Average: {avg}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>

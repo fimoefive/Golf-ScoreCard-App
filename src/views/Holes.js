@@ -8,8 +8,8 @@ import HoleForm from '../forms/HoleForm';
 function Holes({ user }) {
   const [showAddHole, setAddHole] = useState(false);
   const [holes, setHoles] = useState([]);
-  const [total, setTotal] = useState([]);
-  const [average, setAverage] = useState([]);
+  // const [total, setTotal] = useState([]);
+  // const [average, setAverage] = useState([]);
 
   const handleClick = () => {
     setAddHole((prevState) => !prevState);
@@ -28,13 +28,14 @@ function Holes({ user }) {
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <HoleForm
+                formTitle='ADD HOLE'
                 setHoles={setHoles}
                 user={user}
               />
             </div>
           }
         </div>
-        {holes.map((holeInfo) => (
+        {holes.length && holes.map((holeInfo) => (
           <HoleCard className="holeCard"
             key={holeInfo.firebaseKey}
             firebaseKey={holeInfo.firebaseKey}
@@ -48,6 +49,8 @@ function Holes({ user }) {
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
+            total={holeInfo.total}
+            avg={holeInfo.avg}
             uid={holeInfo.uid}
             user={user}
             setHoles={setHoles}
@@ -61,10 +64,10 @@ function Holes({ user }) {
 Holes.propTypes = {
   holes: PropTypes.array,
   setHoles: PropTypes.func,
-  total: PropTypes.array,
-  setTotal: PropTypes.func,
-  average: PropTypes.array,
-  setAverage: PropTypes.func,
+  // total: PropTypes.array,
+  // setTotal: PropTypes.func,
+  // average: PropTypes.array,
+  // setAverage: PropTypes.func,
   user: PropTypes.any
 };
 
