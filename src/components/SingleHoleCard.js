@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function SingleHoleCard({ hole }) {
   return (
     <div>
-      <h1>Hole Card</h1>
+      <h1>HOLE CARD</h1>
       <h2>COURSE: {hole.course}</h2>
       <h2>HOLE 1: {hole.hole1}</h2>
       <h2>HOLE 2: {hole.hole2}</h2>

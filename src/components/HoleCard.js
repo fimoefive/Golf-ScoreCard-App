@@ -25,6 +25,8 @@ const HoleCard = ({
   hole7,
   hole8,
   hole9,
+  total,
+  avg,
   setHoles
 }) => {
   const [editing, setEditing] = useState(false);
@@ -60,6 +62,8 @@ const HoleCard = ({
         <CardText type="number">Hole 7: {hole7}</CardText>
         <CardText type="number">Hole 8: {hole8}</CardText>
         <CardText type="number">Hole 9: {hole9}</CardText>
+        <CardText type="number">Total: {total}</CardText>
+        <CardText type="number">Average: {avg}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -105,6 +109,8 @@ HoleCard.propTypes = {
   hole7: PropTypes.number,
   hole8: PropTypes.number,
   hole9: PropTypes.number,
+  total: PropTypes.number,
+  avg: PropTypes.number,
   setHoles: PropTypes.func
 };
 
