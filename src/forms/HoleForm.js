@@ -103,7 +103,7 @@ const HoleForm = ({
               id='hole1'
               value={hole.hole1}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -125,7 +125,7 @@ const HoleForm = ({
               id='hole3'
               value={hole.hole3}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -136,7 +136,7 @@ const HoleForm = ({
               id='hole4'
               value={hole.hole4}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -147,7 +147,7 @@ const HoleForm = ({
               id='hole5'
               value={hole.hole5}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -158,7 +158,7 @@ const HoleForm = ({
               id='hole6'
               value={hole.hole6}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -169,7 +169,7 @@ const HoleForm = ({
               id='hole7'
               value={hole.hole7}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -180,7 +180,7 @@ const HoleForm = ({
               id='hole8'
               value={hole.hole8}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -191,7 +191,7 @@ const HoleForm = ({
               id='hole9'
               value={hole.hole9}
               type='number'
-              // placeholder='Enter Par'
+              placeholder='Enter Par'
               onChange={handleInputChange}
             />
           </FormGroup>
