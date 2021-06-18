@@ -24,8 +24,8 @@ function SingleHoleCard({ hole }) {
       <h3>Strokes: {hole.hole8}</h3>
       <h2>HOLE 9</h2>
       <h3>Strokes: {hole.hole9}</h3>
-      {/* <h2>TOTAL: {hole.total}</h2>
-      <h2>Average: {hole.avg}</h2> */}
+      <h2>TOTAL: {hole.total}</h2>
+      <h2>Average: {hole.avg}</h2>
       <footer>&#169; 2021</footer>
     </div>
   );
