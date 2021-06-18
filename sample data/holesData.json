@@ -1,136 +1,32 @@
-
 {
-  "-Mc0ZWSfq8qMckPbWjZU": {
-    "firebaseKey": "-Mc0ZWSfq8qMckPbWjZU",
+  "-McGH-vhF8xUH1wlT8Rj": {
+    "firebaseKey": "-McGH-vhF8xUH1wlT8Rj",
     "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
     "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 1,
-    "par": 4
+    "course": "Two Rivers",
+    "hole1": "3",
+    "hole2": "4",
+    "hole3": "5",
+    "hole4": "3",
+    "hole5": "4",
+    "hole6": "3",
+    "hole7": "6",
+    "hole8": "3",
+    "hole9": "2"
   },
-  "-Mc0ZWSh8Owi4IgvC-j7": {
-    "firebaseKey": "-Mc0ZWSh8Owi4IgvC-j7",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 2,
-    "par": 9
-  },
-  "-Mc0ZWSiIa5f7qFlEFhu": {
-    "firebaseKey": "-Mc0ZWSiIa5f7qFlEFhu",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 3,
-    "par": 9
-  },
-  "-Mc0ZWSj3M6VdiyJdy8y": {
-    "firebaseKey": "-Mc0ZWSj3M6VdiyJdy8y",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 4,
-    "par": 4
-  },
-  "-Mc0ZWSk4wzU-hon1uhw": {
-    "firebaseKey": "-Mc0ZWSk4wzU-hon1uhw",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 5,
-    "par": 9
-  },
-  "-Mc0ZWSl-w564k3zDoaH": {
-    "firebaseKey": "-Mc0ZWSl-w564k3zDoaH",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 6,
-    "par": 9
-  },
-  "-Mc0ZWSmHnkFOLLQhPuH": {
-    "firebaseKey": "-Mc0ZWSmHnkFOLLQhPuH",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 7,
-    "par": 4
-  },
-  "-Mc0ZWSnEpl5a2dVjyHp": {
-    "firebaseKey": "-Mc0ZWSnEpl5a2dVjyHp",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 8,
-    "par": "HeH5UQkxSOQnsQPNs1tIH80Zjl03"
-  },
-  "-Mc0ZWSocLAw3LdxaH-J": {
-    "firebaseKey": "-Mc0ZWSocLAw3LdxaH-J",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LF7GpEX6yJvYu2",
-    "roundNum": 9,
-    "par": 5
-  },
-  "-Mc0ZWSpF_CvSMuSogGL": {
-    "firebaseKey": "-Mc0ZWSpF_CvSMuSogGL",
+  "-McGH-vjU6CNXiOYNmtT": {
+    "firebaseKey": "-McGH-vjU6CNXiOYNmtT",
     "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
     "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 1,
-    "par": 6
-  },
-  "-Mc0ZWSqja89N9QF_BYB": {
-    "firebaseKey": "-Mc0ZWSqja89N9QF_BYB",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 2,
-    "par": 4
-  },
-  "-Mc0ZWSr_77XiC1DNF0i": {
-    "firebaseKey": "-Mc0ZWSr_77XiC1DNF0i",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 3,
-    "par": 4
-  },
-  "-Mc0ZWSspD3v6RgD118X": {
-    "firebaseKey": "-Mc0ZWSspD3v6RgD118X",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 4,
-    "par": 3
-  },
-  "-Mc0ZWStPDcDrUkIRh6C": {
-    "firebaseKey": "-Mc0ZWStPDcDrUkIRh6C",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 5,
-    "par": 7
-  },
-  "-Mc0ZWSu6t4QD0TvrAmR": {
-    "firebaseKey": "-Mc0ZWSu6t4QD0TvrAmR",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 6,
-    "par": 8
-  },
-  "-Mc0ZWSvvbTaK6VczCsq": {
-    "firebaseKey": "-Mc0ZWSvvbTaK6VczCsq",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 6,
-    "par": 6
-  },
-  "-Mc0ZWSwgn7Z-h5OA41j": {
-    "firebaseKey": "-Mc0ZWSwgn7Z-h5OA41j",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 8,
-    "par": 7
-  },
-  "-Mc0ZWSyEt1TXhmcUxlL": {
-    "firebaseKey": "-Mc0ZWSyEt1TXhmcUxlL",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LGF1u-91nHkWZb",
-    "roundNum": 9,
-    "par": 9
-  },
-    "-Mc1t2f7oN9O8K68r_uP": {
-    "firebaseKey": "-Mc1t2f7oN9O8K68r_uP",
-    "uid": "HeH5UQkxSOQnsQPNs1tIH80Zjl03",
-    "gameFirebaseKey": "-Mc0U0LH58GiknTFy4tu",
-    "roundNum": 1,
-    "par": 4
+    "course": "Shelby",
+    "hole1": "4",
+    "hole2": "3",
+    "hole3": "5",
+    "hole4": "4",
+    "hole5": "3",
+    "hole6": "2",
+    "hole7": "3",
+    "hole8": "5",
+    "hole9": "4"
   }
 }
