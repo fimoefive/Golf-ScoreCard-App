@@ -58,6 +58,21 @@ const HoleForm = ({
         history.push('/holes');
       });
 
+      // function sumInputs() {
+      //   const inputs = document.getElementsByTagName('Input');
+      //   const result = document.getElementById('total');
+      //   let sum = 0;
+
+      //   for (let i = 0; i < inputs.length; i) {
+      //     const holes = inputs[i];
+
+      //     if (holes.name && holes.name.indexOf('total') < 0) {
+      //       sum += parseInt(holes.value, 9) || 0;
+      //     }
+      //   }
+      //   result.value = sum;
+      // }
+
       // Clears Input Fields
       setHole({
         course: '',
@@ -195,7 +210,19 @@ const HoleForm = ({
               onChange={handleInputChange}
             />
           </FormGroup>
+          <FormGroup>
+            <Label html="total">Total: </Label>
+            <div
+              name="total"
+              id="total"
+              type="number"
+            // value={total}
+            // step=".01" min="0"
+            // onChange={sumInputs}
+            />
+          </FormGroup>
 
+          {/* <button onClick={sumInputs}>Sum</button> */}
           <div>
             <Button className="holeSubmit" color="success" type='submit'>Submit</Button>
           </div>

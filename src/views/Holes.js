@@ -7,6 +7,8 @@ import HoleForm from '../forms/HoleForm';
 
 function Holes({ user }) {
   const [holes, setHoles] = useState([]);
+  // const [total, setTotal] = useState([]);
+  // const [average, setAverage] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
   const handleClick = () => {
@@ -46,6 +48,8 @@ function Holes({ user }) {
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
+            total={holeInfo.total}
+            avg={holeInfo.avg}
             uid={holeInfo.uid}
             user={user}
             setHoles={setHoles}
