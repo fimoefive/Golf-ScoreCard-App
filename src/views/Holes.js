@@ -19,6 +19,24 @@ function Holes({ user }) {
     getHoles().then(setHoles);
   }, []);
 
+  // const addTotal = () => {
+  //   indexOf.holes.hole1 +
+  //     indexOf.holes.hole2 +
+  //     indexOf.holes.hole3 +
+  //     indexOf.holes.hole4 +
+  //     indexOf.holes.hole5 +
+  //     indexOf.holes.hole6 +
+  //     indexOf.holes.hole7 +
+  //     indexOf.holes.hole8 +
+  //     indexOf.holes.hole9 +
+  //   return sum;
+  // };
+
+  holes.forEach(addingHoles);
+  function addingHoles(hole, index) {
+    { hole.hole1 } + 
+  };
+
   return (
     <>
       <div className="hole-container">
@@ -53,6 +71,8 @@ function Holes({ user }) {
             avg={holeInfo.avg}
             uid={holeInfo.uid}
             user={user}
+            // setTotal={setTotal}
+            // setAverage={setAverage}
             setHoles={setHoles}
           />
         ))}
