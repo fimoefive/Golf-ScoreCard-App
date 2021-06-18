@@ -6,10 +6,8 @@ import HoleCard from '../components/HoleCard';
 import HoleForm from '../forms/HoleForm';
 
 function Holes({ user }) {
-  const [showAddHole, setAddHole] = useState(false);
   const [holes, setHoles] = useState([]);
-  // const [total, setTotal] = useState([]);
-  // const [average, setAverage] = useState([]);
+  const [showAddHole, setAddHole] = useState(false);
 
   const handleClick = () => {
     setAddHole((prevState) => !prevState);
@@ -18,24 +16,6 @@ function Holes({ user }) {
   useEffect(() => {
     getHoles().then(setHoles);
   }, []);
-
-  // const addTotal = () => {
-  //   indexOf.holes.hole1 +
-  //     indexOf.holes.hole2 +
-  //     indexOf.holes.hole3 +
-  //     indexOf.holes.hole4 +
-  //     indexOf.holes.hole5 +
-  //     indexOf.holes.hole6 +
-  //     indexOf.holes.hole7 +
-  //     indexOf.holes.hole8 +
-  //     indexOf.holes.hole9 +
-  //   return sum;
-  // };
-
-  holes.forEach(addingHoles);
-  function addingHoles(hole, index) {
-    { hole.hole1 } + 
-  };
 
   return (
     <>
@@ -46,14 +26,13 @@ function Holes({ user }) {
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <HoleForm
-                formTitle='ADD HOLE'
                 setHoles={setHoles}
                 user={user}
               />
             </div>
           }
         </div>
-        {holes.length && holes.map((holeInfo) => (
+        {holes.map((holeInfo) => (
           <HoleCard className="holeCard"
             key={holeInfo.firebaseKey}
             firebaseKey={holeInfo.firebaseKey}
@@ -67,12 +46,8 @@ function Holes({ user }) {
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
-            total={holeInfo.total}
-            avg={holeInfo.avg}
             uid={holeInfo.uid}
             user={user}
-            // setTotal={setTotal}
-            // setAverage={setAverage}
             setHoles={setHoles}
           />
         ))}
@@ -84,10 +59,6 @@ function Holes({ user }) {
 Holes.propTypes = {
   holes: PropTypes.array,
   setHoles: PropTypes.func,
-  // total: PropTypes.array,
-  // setTotal: PropTypes.func,
-  // average: PropTypes.array,
-  // setAverage: PropTypes.func,
   user: PropTypes.any
 };
 

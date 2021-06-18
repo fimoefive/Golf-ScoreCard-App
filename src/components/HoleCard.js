@@ -25,8 +25,6 @@ const HoleCard = ({
   hole7,
   hole8,
   hole9,
-  total,
-  avg,
   setHoles
 }) => {
   const [editing, setEditing] = useState(false);
@@ -53,26 +51,15 @@ const HoleCard = ({
     <>
       <CardBody body="true" className="card text-center" id={uid}>
         <CardTitle tag="h5" type="text">Course: {course}</CardTitle>
-        <CardText type="number">Hole 1</CardText>
-        <CardText type="number">Par: {hole1}</CardText>
-        <CardText type="number">Hole 2</CardText>
-        <CardText type="number">Par: {hole2}</CardText>
-        <CardText type="number">Hole 3</CardText>
-        <CardText type="number">Par: {hole3}</CardText>
-        <CardText type="number">Hole 4</CardText>
-        <CardText type="number">Par: {hole4}</CardText>
-        <CardText type="number">Hole 5</CardText>
-        <CardText type="number">Par: {hole5}</CardText>
-        <CardText type="number">Hole 6</CardText>
-        <CardText type="number">Par: {hole6}</CardText>
-        <CardText type="number">Hole 7</CardText>
-        <CardText type="number">Par: {hole7}</CardText>
-        <CardText type="number">Hole 8</CardText>
-        <CardText type="number">Par: {hole8}</CardText>
-        <CardText type="number">Hole 9</CardText>
-        <CardText type="number">Par: {hole9}</CardText>
-        <CardText type="number">Total: {total}</CardText>
-        <CardText type="number">Average: {avg}</CardText>
+        <CardText type="number">Hole 1: {hole1}</CardText>
+        <CardText type="number">Hole 2: {hole2}</CardText>
+        <CardText type="number">Hole 3: {hole3}</CardText>
+        <CardText type="number">Hole 4: {hole4}</CardText>
+        <CardText type="number">Hole 5: {hole5}</CardText>
+        <CardText type="number">Hole 6: {hole6}</CardText>
+        <CardText type="number">Hole 7: {hole7}</CardText>
+        <CardText type="number">Hole 8: {hole8}</CardText>
+        <CardText type="number">Hole 9: {hole9}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -118,8 +105,6 @@ HoleCard.propTypes = {
   hole7: PropTypes.number,
   hole8: PropTypes.number,
   hole9: PropTypes.number,
-  total: PropTypes.number,
-  avg: PropTypes.number,
   setHoles: PropTypes.func
 };
 
