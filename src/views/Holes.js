@@ -7,7 +7,9 @@ import HoleForm from '../forms/HoleForm';
 
 function Holes({ user }) {
   const [holes, setHoles] = useState([]);
-  // const [total, setTotal] = useState([]);
+  // const [total, setTotal] = useState(hole1 + hole2 + hole3 + hole4 + hole5 + hole6 + hole7 + hole8 + hole9);
+  // const [total, setTotal] = useState(0);
+  const [totals, setTotals] = useState([]);
   // const [average, setAverage] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
@@ -18,6 +20,27 @@ function Holes({ user }) {
   useEffect(() => {
     getHoles().then(setHoles);
   }, []);
+
+  // const holeCal = () => {
+  //   let holeTotal = 0;
+  //   const hLength = holes.length;
+  //   holes.forEach(({ hole }) holeTotal += hole);
+  //   return holeTotal / hLength;
+  // };
+
+  function avg() {
+    let hole = 0;
+    holes.forEach((obj) => {
+      hole += obj.hole;
+    });
+    hole /= holes.length;
+    return hole;
+  }
+  const totalScore = holes.reduce(
+    (previousScore, currentScore) => previousScore + currentScore,
+    0
+  );
+  console.warn(totalScore);
 
   return (
     <>
@@ -30,6 +53,7 @@ function Holes({ user }) {
               <HoleForm
                 setHoles={setHoles}
                 user={user}
+                setTotals={setTotals}
               />
             </div>
           }
@@ -48,8 +72,10 @@ function Holes({ user }) {
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
-            total={holeInfo.total}
-            avg={holeInfo.avg}
+            totals={totals}
+            // totalScore={totalScore}
+            // holeCal={holeCal}
+            avg={avg}
             uid={holeInfo.uid}
             user={user}
             setHoles={setHoles}

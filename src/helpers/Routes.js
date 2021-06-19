@@ -12,7 +12,9 @@ function Routes({
   games,
   setGames,
   holes,
-  setHoles
+  setHoles,
+  total,
+  setTotal
 }) {
   return (
     <>
@@ -36,9 +38,12 @@ function Routes({
             exact
             path='/holes'
             component={() => <Holes
-              user={user}
+              // user={user}
               holes={holes}
-              setHoles={setHoles} />}
+              setHoles={setHoles}
+              total={total}
+              setTotal={setTotal}
+            />}
           />
           <Route
             user={user}
@@ -57,6 +62,8 @@ Routes.propTypes = {
   setGames: PropTypes.func,
   holes: PropTypes.array,
   setHoles: PropTypes.func,
+  total: PropTypes.array,
+  setTotal: PropTypes.func,
   user: PropTypes.any
 };
 
