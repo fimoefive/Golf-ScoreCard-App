@@ -5,7 +5,7 @@ import {
   Button,
   CardBody,
   CardText,
-  CardTitle
+  CardTitle,
 } from 'reactstrap';
 import { deleteHole } from '../helpers/data/holeData';
 import HoleForm from '../forms/HoleForm';
@@ -25,6 +25,9 @@ const HoleCard = ({
   hole7,
   hole8,
   hole9,
+  total,
+  avg,
+  golfScore,
   setHoles
 }) => {
   const [editing, setEditing] = useState(false);
@@ -51,15 +54,27 @@ const HoleCard = ({
     <>
       <CardBody body="true" className="card text-center" id={uid}>
         <CardTitle tag="h5" type="text">Course: {course}</CardTitle>
-        <CardText type="number">Hole 1: {hole1}</CardText>
-        <CardText type="number">Hole 2: {hole2}</CardText>
-        <CardText type="number">Hole 3: {hole3}</CardText>
-        <CardText type="number">Hole 4: {hole4}</CardText>
-        <CardText type="number">Hole 5: {hole5}</CardText>
-        <CardText type="number">Hole 6: {hole6}</CardText>
-        <CardText type="number">Hole 7: {hole7}</CardText>
-        <CardText type="number">Hole 8: {hole8}</CardText>
-        <CardText type="number">Hole 9: {hole9}</CardText>
+        <CardText type="text">Hole 1</CardText>
+        <div id='hole1' type='number'>{hole1}</div>
+        <CardText type="text">Hole 2</CardText>
+        <div id='hole2' type='number'>{hole2}</div>
+        <CardText type="text">Hole 3</CardText>
+        <div id='hole3' type='number'>{hole3}</div>
+        <CardText type="text">Hole 4</CardText>
+        <div id='hole4' type='number'>{hole4}</div>
+        <CardText type="text">Hole 5</CardText>
+        <div id='hole5' type='number'>{hole5}</div>
+        <CardText type="text">Hole 6</CardText>
+        <div id='hole6' type='number'>{hole6}</div>
+        <CardText type="text">Hole 7</CardText>
+        <div id='hole7' type='number'>{hole7}</div>
+        <CardText type="text">Hole 8</CardText>
+        <div id='hole8' type='number'>{hole8}</div>
+        <CardText type="text">Hole 9</CardText>
+        <div id='hole9' type='number'>{hole9}</div>
+        <div id='total' type='number'>Total: {total}</div>
+        <div id='avg' type='number'>Average: {avg}</div>
+        <div id='golfScore' type='string'>{golfScore}</div>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -82,6 +97,9 @@ const HoleCard = ({
             hole7={hole7}
             hole8={hole8}
             hole9={hole9}
+            total={total}
+            avg={avg}
+            golfScore={golfScore}
             setHoles={setHoles}
           />
         }
@@ -96,15 +114,18 @@ HoleCard.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   gameFirebaseKey: PropTypes.string,
   course: PropTypes.string,
-  hole1: PropTypes.number,
-  hole2: PropTypes.number,
-  hole3: PropTypes.number,
-  hole4: PropTypes.number,
-  hole5: PropTypes.number,
-  hole6: PropTypes.number,
-  hole7: PropTypes.number,
-  hole8: PropTypes.number,
-  hole9: PropTypes.number,
+  hole1: PropTypes.string,
+  hole2: PropTypes.string,
+  hole3: PropTypes.string,
+  hole4: PropTypes.string,
+  hole5: PropTypes.string,
+  hole6: PropTypes.string,
+  hole7: PropTypes.string,
+  hole8: PropTypes.string,
+  hole9: PropTypes.string,
+  total: PropTypes.number,
+  avg: PropTypes.string,
+  golfScore: PropTypes.string,
   setHoles: PropTypes.func
 };
 

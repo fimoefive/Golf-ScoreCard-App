@@ -13,7 +13,6 @@ function SingleGameCard({ game }) {
 }
 
 SingleGameCard.propTypes = {
-  children: PropTypes.any,
   game: PropTypes.object
 };
 

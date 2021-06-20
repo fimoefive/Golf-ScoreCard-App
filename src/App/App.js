@@ -31,6 +31,7 @@ function App() {
   return (
     <div className='App'>
       <h2>GOLF APP</h2>
+
       <Router>
         <NavBar user={user} />
         <Routes user={user} />

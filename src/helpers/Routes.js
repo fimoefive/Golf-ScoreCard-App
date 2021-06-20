@@ -12,7 +12,7 @@ function Routes({
   games,
   setGames,
   holes,
-  setHoles
+  setHoles,
 }) {
   return (
     <>
@@ -22,6 +22,7 @@ function Routes({
           <Route
             exact
             path='/games'
+            user={user}
             component={() => <Games
               user={user}
               games={games}
@@ -35,13 +36,15 @@ function Routes({
           <Route
             exact
             path='/holes'
+            // user={user}
             component={() => <Holes
               user={user}
               holes={holes}
-              setHoles={setHoles} />}
+              setHoles={setHoles}
+            />}
           />
           <Route
-            user={user}
+            // user={user}
             path='/holes/:firebaseKey'
             component={SingleHole}
           />
