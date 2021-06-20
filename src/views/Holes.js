@@ -31,7 +31,7 @@ function Holes({ user }) {
     hole += Number(holeInfo.hole9);
     // console.warn(hole);
     hole /= 9;
-    console.warn(holeInfo[`hole${2}`]);
+    // console.warn(holeInfo[`hole${2}`]);
     return hole.toFixed(2);
   }
 

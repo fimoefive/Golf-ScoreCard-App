@@ -36,7 +36,7 @@ function Routes({
           <Route
             exact
             path='/holes'
-            user={user}
+            // user={user}
             component={() => <Holes
               user={user}
               holes={holes}
@@ -44,7 +44,7 @@ function Routes({
             />}
           />
           <Route
-            user={user}
+            // user={user}
             path='/holes/:firebaseKey'
             component={SingleHole}
           />
