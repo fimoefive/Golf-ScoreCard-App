@@ -7,10 +7,6 @@ import HoleForm from '../forms/HoleForm';
 
 function Holes({ user }) {
   const [holes, setHoles] = useState([]);
-  // const [total, setTotal] = useState(hole1 + hole2 + hole3 + hole4 + hole5 + hole6 + hole7 + hole8 + hole9);
-  // const [total, setTotal] = useState(0);
-  // const [totals, setTotals] = useState([]);
-  // const [average, setAverage] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
   const handleClick = () => {
@@ -20,25 +16,6 @@ function Holes({ user }) {
   useEffect(() => {
     getHoles().then(setHoles);
   }, []);
-
-  // let holeSum = 0;
-  // let itemsFound = 0;
-  // const len = holes.length;
-  // item = null;
-  // for (let index = 0; index < len; index++) {
-  //   item = holes.[index];
-  //   if (item.found) {
-  //     holeSum = item.hole1 + holeSum;
-  //     itemsFound = itemsFound + 1;
-  //   }
-  // }
-
-  // const holeCal = () => {
-  //   let holeTotal = 0;
-  //   const hLength = holes.length;
-  //   holes.forEach(({ hole }) holeTotal += hole);
-  //   return holeTotal / hLength;
-  // };
 
   function avg(holeInfo) {
     // console.warn(holeInfo);
@@ -57,6 +34,7 @@ function Holes({ user }) {
     console.warn(holeInfo[`hole${2}`]);
     return hole.toFixed(2);
   }
+
   function total(holeInfo) {
     // console.warn(holeInfo);
     let hole = 0;
@@ -105,12 +83,6 @@ function Holes({ user }) {
     // console.warn(stroke);
     return stroke;
   };
-
-  // const totalScore = holes.reduce(
-  //   (previousScore, currentScore) => previousScore + currentScore,
-  //   0
-  // );
-  // console.warn(totalScore);
 
   return (
     <>
