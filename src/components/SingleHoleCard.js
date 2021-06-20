@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function SingleHoleCard({ hole }) {
+function SingleHoleCard({
+  hole,
+  avg,
+  total,
+  golfScore
+}) {
   return (
     <div>
       <h1>COURSE</h1>
@@ -24,15 +29,19 @@ function SingleHoleCard({ hole }) {
       <h3>Strokes: {hole.hole8}</h3>
       <h2>HOLE 9</h2>
       <h3>Strokes: {hole.hole9}</h3>
-      <h2>TOTAL: {hole.total}</h2>
-      <h2>Average: {hole.avg}</h2>
+      <h2>TOTAL: {total}</h2>
+      <h2>Average: {avg}</h2>
+      <h2>{golfScore}</h2>
       <footer>&#169; 2021</footer>
     </div>
   );
 }
 
 SingleHoleCard.propTypes = {
-  hole: PropTypes.object
+  hole: PropTypes.object,
+  total: PropTypes.number,
+  avg: PropTypes.string,
+  golfScore: PropTypes.string,
 };
 
 export default SingleHoleCard;
