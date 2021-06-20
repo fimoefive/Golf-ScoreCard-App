@@ -5,7 +5,7 @@ import { getGames } from '../helpers/data/gameData';
 import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
 
-function Games({ user }) {
+function Games({ user, uid }) {
   const [showAddGame, setAddGame] = useState(false);
   const [games, setGames] = useState([]);
 
@@ -14,7 +14,8 @@ function Games({ user }) {
   };
 
   useEffect(() => {
-    getGames().then(setGames);
+    // getGames().then(setGames);
+    getGames(uid).then((playersArray) => setGames(playersArray));
   }, []);
 
   return (
@@ -52,7 +53,8 @@ function Games({ user }) {
 Games.propTypes = {
   games: PropTypes.array,
   setGames: PropTypes.func,
-  user: PropTypes.any
+  user: PropTypes.any,
+  uid: PropTypes.string
 };
 
 export default Games;

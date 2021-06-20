@@ -5,7 +5,7 @@ import { getHoles } from '../helpers/data/holeData';
 import HoleCard from '../components/HoleCard';
 import HoleForm from '../forms/HoleForm';
 
-function Holes({ user }) {
+function Holes({ user, uid }) {
   const [holes, setHoles] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
@@ -14,7 +14,8 @@ function Holes({ user }) {
   };
 
   useEffect(() => {
-    getHoles().then(setHoles);
+    // getHoles().then(setHoles);
+    getHoles(uid).then((gamesArray) => setHoles(gamesArray));
   }, []);
 
   function avg(holeInfo) {
@@ -129,7 +130,8 @@ function Holes({ user }) {
 Holes.propTypes = {
   holes: PropTypes.array,
   setHoles: PropTypes.func,
-  user: PropTypes.any
+  user: PropTypes.any,
+  uid: PropTypes.string
 };
 
 export default Holes;

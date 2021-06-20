@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import 'firebase/auth';
 import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
