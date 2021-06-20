@@ -9,7 +9,7 @@ function Holes({ user }) {
   const [holes, setHoles] = useState([]);
   // const [total, setTotal] = useState(hole1 + hole2 + hole3 + hole4 + hole5 + hole6 + hole7 + hole8 + hole9);
   // const [total, setTotal] = useState(0);
-  const [totals, setTotals] = useState([]);
+  // const [totals, setTotals] = useState([]);
   // const [average, setAverage] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
@@ -21,6 +21,18 @@ function Holes({ user }) {
     getHoles().then(setHoles);
   }, []);
 
+  // let holeSum = 0;
+  // let itemsFound = 0;
+  // const len = holes.length;
+  // item = null;
+  // for (let index = 0; index < len; index++) {
+  //   item = holes.[index];
+  //   if (item.found) {
+  //     holeSum = item.hole1 + holeSum;
+  //     itemsFound = itemsFound + 1;
+  //   }
+  // }
+
   // const holeCal = () => {
   //   let holeTotal = 0;
   //   const hLength = holes.length;
@@ -28,32 +40,89 @@ function Holes({ user }) {
   //   return holeTotal / hLength;
   // };
 
-  function avg() {
+  function avg(holeInfo) {
+    // console.warn(holeInfo);
     let hole = 0;
-    holes.forEach((obj) => {
-      hole += obj.hole;
-    });
-    hole /= holes.length;
+    hole += Number(holeInfo.hole1);
+    hole += Number(holeInfo.hole2);
+    hole += Number(holeInfo.hole3);
+    hole += Number(holeInfo.hole4);
+    hole += Number(holeInfo.hole5);
+    hole += Number(holeInfo.hole6);
+    hole += Number(holeInfo.hole7);
+    hole += Number(holeInfo.hole8);
+    hole += Number(holeInfo.hole9);
+    // console.warn(hole);
+    hole /= 9;
+    console.warn(holeInfo[`hole${2}`]);
+    return hole.toFixed(2);
+  }
+  function total(holeInfo) {
+    // console.warn(holeInfo);
+    let hole = 0;
+    hole += Number(holeInfo.hole1);
+    hole += Number(holeInfo.hole2);
+    hole += Number(holeInfo.hole3);
+    hole += Number(holeInfo.hole4);
+    hole += Number(holeInfo.hole5);
+    hole += Number(holeInfo.hole6);
+    hole += Number(holeInfo.hole7);
+    hole += Number(holeInfo.hole8);
+    hole += Number(holeInfo.hole9);
+    // console.warn(hole);
+    // hole /= 9;
+    // console.warn(holeInfo[`hole${2}`]);
     return hole;
   }
-  const totalScore = holes.reduce(
-    (previousScore, currentScore) => previousScore + currentScore,
-    0
-  );
-  console.warn(totalScore);
+
+  const golfScore = (par, holeInfo) => {
+    let stroke = '';
+    switch (true) {
+      case (holeInfo === 1):
+        stroke = 'Hole In One!';
+        break;
+      case (holeInfo <= par - 2):
+        stroke = 'Eagle';
+        break;
+      case (holeInfo === par - 1):
+        stroke = 'Birdie';
+        break;
+      case (holeInfo === par):
+        stroke = 'Par';
+        break;
+      case (holeInfo === par + 1):
+        stroke = 'Bogey';
+        break;
+      case (holeInfo === par + 2):
+        stroke = 'Double Bogey';
+        break;
+      case (holeInfo >= par + 3):
+        stroke = 'Go Home!';
+        break;
+      default:
+        stroke = 'Game Over!';
+    }
+    // console.warn(stroke);
+    return stroke;
+  };
+
+  // const totalScore = holes.reduce(
+  //   (previousScore, currentScore) => previousScore + currentScore,
+  //   0
+  // );
+  // console.warn(totalScore);
 
   return (
     <>
       <div className="hole-container">
         <div>
           {!showAddHole
-            ? <Button className="addHoleBtn" color="primary" user={user} onClick={handleClick}>ADD HOLE</Button>
+            ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD Game</Button>
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <HoleForm
                 setHoles={setHoles}
                 user={user}
-                setTotals={setTotals}
               />
             </div>
           }
@@ -72,10 +141,11 @@ function Holes({ user }) {
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
-            totals={totals}
             // totalScore={totalScore}
             // holeCal={holeCal}
-            avg={avg}
+            avg={avg(holeInfo)}
+            total={total(holeInfo)}
+            golfScore={golfScore(holeInfo)}
             uid={holeInfo.uid}
             user={user}
             setHoles={setHoles}

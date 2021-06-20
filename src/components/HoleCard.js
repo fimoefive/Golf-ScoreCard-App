@@ -27,6 +27,7 @@ const HoleCard = ({
   hole9,
   total,
   avg,
+  golfScore,
   setHoles
 }) => {
   const [editing, setEditing] = useState(false);
@@ -73,6 +74,7 @@ const HoleCard = ({
         <div id='hole9' type='number'>{hole9}</div>
         <div id='total' type='number'>Total: {total}</div>
         <div id='avg' type='number'>Average: {avg}</div>
+        <div id='golfScore' type='string'>{golfScore}</div>
         <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -97,6 +99,7 @@ const HoleCard = ({
             hole9={hole9}
             total={total}
             avg={avg}
+            golfScore={golfScore}
             setHoles={setHoles}
           />
         }
@@ -120,8 +123,9 @@ HoleCard.propTypes = {
   hole7: PropTypes.string,
   hole8: PropTypes.string,
   hole9: PropTypes.string,
-  total: PropTypes.string,
+  total: PropTypes.number,
   avg: PropTypes.string,
+  golfScore: PropTypes.string,
   setHoles: PropTypes.func
 };
 
