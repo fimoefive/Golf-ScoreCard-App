@@ -113,8 +113,6 @@ function Holes({ user }) {
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
-            // totalScore={totalScore}
-            // holeCal={holeCal}
             avg={avg(holeInfo)}
             total={total(holeInfo)}
             golfScore={golfScore(holeInfo)}
