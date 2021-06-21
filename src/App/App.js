@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -6,7 +6,7 @@ import NavBar from '../components/NavBar';
 import firebaseConfig from '../helpers/apiKeys';
 import { getGames } from '../helpers/data/gameData';
 import { getHoles } from '../helpers/data/holeData';
-import { createUser, getUser, getUserUid } from '../helpers/data/userData';
+import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
 import './App.scss';
 
@@ -17,28 +17,33 @@ function App() {
   const [games, setGames] = useState([]);
   const [holes, setHoles] = useState([]);
 
+  // const getLoggedInUser = () => firebase.auth().currentUser?.uid;
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
         const userInfoObj = {
+          email: authed.email,
           fullName: authed.displayName,
           profileImage: authed.photoURL,
           uid: authed.uid,
           user: authed.email.split('@')[0]
         };
         setUser(userInfoObj);
-        getUserUid(userInfoObj).then((response) => {
-          // getUserUid(authed.uid).then((response) => {
+        // getUserUid(userInfoObj).then((response) => {
+        getUserUid(authed.uid).then((response) => {
           if (Object.values(response.data).length === 0) {
-            createUser(userInfoObj);
+            // createUser(userInfoObj);
+            createUser(userInfoObj).then((resp) => setUser(resp));
+            // getLoggedInUser(userInfoObj);
             getUser(userInfoObj);
-            // createUser(userInfoObj).then((resp) => setUser(resp));
           }
         });
         // else {
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         getGames(authed.uid).then((playerArray) => setGames(playerArray));
         // getGames(authed.uid).then(setGames);
+        setUser(userInfoObj);
       } else if (user || user === null) {
         setUser(false);
       }
