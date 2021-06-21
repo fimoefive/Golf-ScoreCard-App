@@ -11,7 +11,7 @@ import { deleteGame } from '../helpers/data/gameData';
 import GameForm from '../forms/GameForm';
 
 const GameCard = ({
-  uid,
+  // uid,
   user,
   gameFirebaseKey,
   name,
@@ -24,7 +24,7 @@ const GameCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteGame(gameFirebaseKey, user)
+        deleteGame(gameFirebaseKey, user.uid)
           .then(setGames);
         break;
       case 'edit':
@@ -40,7 +40,7 @@ const GameCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" id={uid}>
+      <CardBody body="true" className="card text-center">
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText>Date: {date}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
@@ -52,10 +52,10 @@ const GameCard = ({
           editing && <GameForm
             formTitle='Edit Game'
             gameFirebaseKey={gameFirebaseKey}
-            uid={uid}
             user={user}
             name={name}
             date={date}
+            // uid={uid}
             setGames={setGames}
           />
         }
@@ -65,11 +65,11 @@ const GameCard = ({
 };
 
 GameCard.propTypes = {
-  uid: PropTypes.string,
   user: PropTypes.any,
   gameFirebaseKey: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  // uid: PropTypes.string,
   setGames: PropTypes.func
 };
 

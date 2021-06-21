@@ -5,7 +5,7 @@ import { getGames } from '../helpers/data/gameData';
 import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
 
-function Games({ user, uid }) {
+function Games({ user }) {
   const [showAddGame, setAddGame] = useState(false);
   const [games, setGames] = useState([]);
 
@@ -15,15 +15,15 @@ function Games({ user, uid }) {
 
   useEffect(() => {
     // getGames().then(setGames);
-    getGames(uid).then((playersArray) => setGames(playersArray));
-  }, []);
+    getGames(user).then((playersArray) => setGames(playersArray));
+  }, [games.length]);
 
   return (
     <>
       <div className="game-container">
         <div>
           {!showAddGame
-            ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD GAME</Button>
+            ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD Player</Button>
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <GameForm
@@ -39,7 +39,7 @@ function Games({ user, uid }) {
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
-            uid={gameInfo.uid}
+            // uid={gameInfo.uid}
             user={user}
             // games={games}
             setGames={setGames}
@@ -54,7 +54,7 @@ Games.propTypes = {
   games: PropTypes.array,
   setGames: PropTypes.func,
   user: PropTypes.any,
-  uid: PropTypes.string
+  // uid: PropTypes.string
 };
 
 export default Games;

@@ -11,6 +11,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [user, setUser] = useState(null);
+  // const [games, setGames] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {

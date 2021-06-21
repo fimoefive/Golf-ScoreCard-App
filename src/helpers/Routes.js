@@ -20,7 +20,7 @@ function Routes({
         <Switch>
           <Route exact path='/' component={Main} />
           <Route
-            exact
+            // exact
             path='/games'
             component={() => (<Games
               user={user}
@@ -33,7 +33,7 @@ function Routes({
             component={SingleGame}
           />
           <Route
-            exact
+            // exact
             path='/holes'
             component={() => <Holes
               user={user}
