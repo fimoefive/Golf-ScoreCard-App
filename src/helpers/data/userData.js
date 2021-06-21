@@ -1,7 +1,10 @@
 import axios from 'axios';
+// import firebase from 'firebase';
 import firebaseConfig from '../apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
+
+// const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
 const getUser = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/user.json`)
@@ -20,10 +23,14 @@ const createUser = (userObject) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const getUserUid = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/user.json?orderBy="uid"&equalTo="${uid}"`)
+const getUserUid = (user) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/user.json?orderBy="uid"&equalTo="${user.uid}"`)
     .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
 
-export { getUser, createUser, getUserUid };
+export {
+  // getLoggedInUser,
+  getUser, createUser,
+  getUserUid
+};

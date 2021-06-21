@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from 'firebase';
 import 'firebase/auth';
-import firebaseConfig from '../helpers/apiKeys';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import Routes from '../helpers/Routes';
-import { getUser, getUserUid, createUser } from '../helpers/data/userData';
-import { getHoles } from '../helpers/data/holeData';
+import firebaseConfig from '../helpers/apiKeys';
 import { getGames } from '../helpers/data/gameData';
+import { getHoles } from '../helpers/data/holeData';
+import { createUser, getUser, getUserUid } from '../helpers/data/userData';
+import Routes from '../helpers/Routes';
 import './App.scss';
 
 firebase.initializeApp(firebaseConfig);
