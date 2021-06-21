@@ -11,7 +11,7 @@ import { deleteHole } from '../helpers/data/holeData';
 import HoleForm from '../forms/HoleForm';
 
 const HoleCard = ({
-  uid,
+  // uid,
   user,
   firebaseKey,
   gameFirebaseKey,
@@ -52,7 +52,7 @@ const HoleCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" id={uid}>
+      <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">Course: {course}</CardTitle>
         <CardText type="text">Hole 1</CardText>
         <div id='hole1' type='number'>{hole1}</div>
@@ -84,7 +84,7 @@ const HoleCard = ({
           editing && <HoleForm
             formTitle='Edit Game'
             firebaseKey={firebaseKey}
-            uid={uid}
+            // uid={uid}
             user={user}
             gameFirebaseKey={gameFirebaseKey}
             course={course}
@@ -109,7 +109,7 @@ const HoleCard = ({
 };
 
 HoleCard.propTypes = {
-  uid: PropTypes.string,
+  // uid: PropTypes.string,
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   gameFirebaseKey: PropTypes.string,
