@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import { getHoles } from '../helpers/data/holeData';
+// import { getHoles } from '../helpers/data/holeData';
 import HoleCard from '../components/HoleCard';
 import HoleForm from '../forms/HoleForm';
 
-function Holes({ user, uid }) {
-  const [holes, setHoles] = useState([]);
+function Holes({
+  user,
+  setUser,
+  holes,
+  setHoles
+}) {
   const [showAddHole, setAddHole] = useState(false);
+  // const [holes, setHoles] = useState([]);
 
   const handleClick = () => {
     setAddHole((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    // getHoles().then(setHoles);
-    getHoles(uid).then((gamesArray) => setHoles(gamesArray));
-  }, []);
+  // useEffect(() => {
+  //   // getHoles().then(setHoles);
+  //   getHoles(uid).then((gamesArray) => setHoles(gamesArray));
+  // }, []);
 
   function avg(holeInfo) {
     // console.warn(holeInfo);
@@ -117,8 +122,10 @@ function Holes({ user, uid }) {
             avg={avg(holeInfo)}
             total={total(holeInfo)}
             golfScore={golfScore(holeInfo)}
-            uid={holeInfo.uid}
+            // uid={holeInfo.uid}
             user={user}
+            setUser={setUser}
+            holes={holes}
             setHoles={setHoles}
           />
         ))}
@@ -128,10 +135,10 @@ function Holes({ user, uid }) {
 }
 
 Holes.propTypes = {
-  holes: PropTypes.array,
-  setHoles: PropTypes.func,
   user: PropTypes.any,
-  uid: PropTypes.string
+  setUser: PropTypes.func,
+  holes: PropTypes.array,
+  setHoles: PropTypes.func
 };
 
 export default Holes;
