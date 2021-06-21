@@ -51,9 +51,9 @@ const HoleForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hole.firebaseKey) {
-      updateHole(hole, user).then((holeArray) => setHoles(holeArray));
+      updateHole(hole, user.uid).then((holeArray) => setHoles(holeArray));
     } else {
-      addHole(hole, user).then((response) => {
+      addHole(hole, user.uid).then((response) => {
         setHoles(response);
         history.push('/holes');
       });

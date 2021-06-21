@@ -6,6 +6,7 @@ import firebaseConfig from '../helpers/apiKeys';
 import NavBar from '../components/NavBar';
 import Routes from '../helpers/Routes';
 import { getUser, getUserUid, createUser } from '../helpers/data/userData';
+import { getHoles } from '../helpers/data/holeData';
 import { getGames } from '../helpers/data/gameData';
 import './App.scss';
 
@@ -14,6 +15,7 @@ firebase.initializeApp(firebaseConfig);
 function App() {
   const [user, setUser] = useState(null);
   const [games, setGames] = useState([]);
+  const [holes, setHoles] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -34,6 +36,7 @@ function App() {
           }
         });
         // else {
+        getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         getGames(authed.uid).then((playerArray) => setGames(playerArray));
         // getGames(authed.uid).then(setGames);
       } else if (user || user === null) {
@@ -51,6 +54,8 @@ function App() {
         <Routes user={user}
           games={games}
           setGames={setGames}
+          holes={holes}
+          setHoles={setHoles}
         />
       </Router>
     </div>
