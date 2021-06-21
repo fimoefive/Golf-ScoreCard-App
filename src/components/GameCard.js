@@ -43,14 +43,14 @@ const GameCard = ({
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText>Date: {date}</CardText>
-        <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
-        <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
+        <Button color="warning" onClick={() => handleClick('view')}>View Player</Button>
+        <Button color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
-          {editing ? 'CloseForm' : 'Edit Game'}
+          {editing ? 'CloseForm' : 'Edit Player'}
         </Button>
         {
           editing && <GameForm
-            formTitle='Edit Game'
+            formTitle='Edit Player'
             gameFirebaseKey={gameFirebaseKey}
             user={user}
             name={name}

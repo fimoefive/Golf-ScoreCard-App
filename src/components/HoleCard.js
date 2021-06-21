@@ -75,14 +75,14 @@ const HoleCard = ({
         <div id='total' type='number'>Total: {total}</div>
         <div id='avg' type='number'>Average: {avg}</div>
         <div id='golfScore' type='string'>{golfScore}</div>
-        <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
-        <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
+        <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
+        <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
-          {editing ? 'CloseForm' : 'Edit Hole'}
+          {editing ? 'CloseForm' : 'Edit Game'}
         </Button>
         {
           editing && <HoleForm
-            formTitle='Edit Hole'
+            formTitle='Edit Game'
             firebaseKey={firebaseKey}
             uid={uid}
             user={user}
