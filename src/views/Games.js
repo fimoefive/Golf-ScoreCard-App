@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 // import { getGames } from '../helpers/data/gameData';
 import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
+// import Holes from './Holes';
 
 function Games({
   user,
@@ -21,6 +22,13 @@ function Games({
   //   // getGames().then(setGames);
   //   getGames(user).then((playersArray) => setGames(playersArray));
   // }, [games.length]);
+
+  function playerAvg(gameInfo) {
+    let average = 0;
+    average += Number(gameInfo.length);
+
+    return average;
+  }
 
   return (
     <>
@@ -43,6 +51,7 @@ function Games({
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
+            playerAvg={playerAvg(gameInfo)}
             user={user}
             games={games}
             setGames={setGames}

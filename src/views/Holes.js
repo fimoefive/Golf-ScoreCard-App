@@ -22,24 +22,6 @@ function Holes({
   //   getHoles(uid).then((gamesArray) => setHoles(gamesArray));
   // }, []);
 
-  function avg(holeInfo) {
-    // console.warn(holeInfo);
-    let hole = 0;
-    hole += Number(holeInfo.hole1);
-    hole += Number(holeInfo.hole2);
-    hole += Number(holeInfo.hole3);
-    hole += Number(holeInfo.hole4);
-    hole += Number(holeInfo.hole5);
-    hole += Number(holeInfo.hole6);
-    hole += Number(holeInfo.hole7);
-    hole += Number(holeInfo.hole8);
-    hole += Number(holeInfo.hole9);
-    // console.warn(hole);
-    hole /= 9;
-    // console.warn(holeInfo[`hole${2}`]);
-    return hole.toFixed(2);
-  }
-
   function total(holeInfo) {
     // console.warn(holeInfo);
     let hole = 0;
@@ -58,36 +40,23 @@ function Holes({
     return hole;
   }
 
-  const golfScore = (par, holeInfo) => {
-    let stroke = '';
-    switch (true) {
-      case (holeInfo === 1):
-        stroke = 'Hole In One!';
-        break;
-      case (holeInfo <= par - 2):
-        stroke = 'Eagle';
-        break;
-      case (holeInfo === par - 1):
-        stroke = 'Birdie';
-        break;
-      case (holeInfo === par):
-        stroke = 'Par';
-        break;
-      case (holeInfo === par + 1):
-        stroke = 'Bogey';
-        break;
-      case (holeInfo === par + 2):
-        stroke = 'Double Bogey';
-        break;
-      case (holeInfo >= par + 3):
-        stroke = 'Go Home!';
-        break;
-      default:
-        stroke = 'Game Over!';
-    }
-    // console.warn(stroke);
-    return stroke;
-  };
+  function avg(holeInfo) {
+    // console.warn(holeInfo);
+    let hole = 0;
+    hole += Number(holeInfo.hole1);
+    hole += Number(holeInfo.hole2);
+    hole += Number(holeInfo.hole3);
+    hole += Number(holeInfo.hole4);
+    hole += Number(holeInfo.hole5);
+    hole += Number(holeInfo.hole6);
+    hole += Number(holeInfo.hole7);
+    hole += Number(holeInfo.hole8);
+    hole += Number(holeInfo.hole9);
+    // console.warn(hole);
+    hole /= 9;
+    // console.warn(holeInfo[`hole${2}`]);
+    return hole.toFixed(2);
+  }
 
   return (
     <>
@@ -118,9 +87,8 @@ function Holes({
             hole7={holeInfo.hole7}
             hole8={holeInfo.hole8}
             hole9={holeInfo.hole9}
-            avg={avg(holeInfo)}
             total={total(holeInfo)}
-            golfScore={golfScore(holeInfo)}
+            avg={avg(holeInfo)}
             user={user}
             holes={holes}
             setHoles={setHoles}
