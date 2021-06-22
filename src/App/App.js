@@ -1,16 +1,12 @@
-import firebase from 'firebase';
-// import 'firebase/auth';
+import firebase from 'firebase/app';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import firebaseConfig from '../helpers/apiKeys';
 import { getGames } from '../helpers/data/gameData';
 import { getHoles } from '../helpers/data/holeData';
 import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
 import './App.scss';
-
-firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [user, setUser] = useState({});
