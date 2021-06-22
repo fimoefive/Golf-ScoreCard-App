@@ -11,7 +11,6 @@ import { deleteHole } from '../helpers/data/holeData';
 import HoleForm from '../forms/HoleForm';
 
 const HoleCard = ({
-  // uid,
   user,
   firebaseKey,
   gameFirebaseKey,
@@ -28,6 +27,7 @@ const HoleCard = ({
   total,
   avg,
   golfScore,
+  uid,
   setHoles
 }) => {
   const [editing, setEditing] = useState(false);
@@ -100,6 +100,7 @@ const HoleCard = ({
             total={total}
             avg={avg}
             golfScore={golfScore}
+            uid={uid}
             setHoles={setHoles}
           />
         }
@@ -109,7 +110,6 @@ const HoleCard = ({
 };
 
 HoleCard.propTypes = {
-  // uid: PropTypes.string,
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   gameFirebaseKey: PropTypes.string,
@@ -126,6 +126,7 @@ HoleCard.propTypes = {
   total: PropTypes.number,
   avg: PropTypes.string,
   golfScore: PropTypes.string,
+  uid: PropTypes.string,
   setHoles: PropTypes.func
 };
 

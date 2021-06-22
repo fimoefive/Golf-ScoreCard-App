@@ -9,12 +9,12 @@ import { addGame, updateGame } from '../helpers/data/gameData';
 
 const GameForm = ({
   formTitle,
-  setGames,
   gameFirebaseKey,
   name,
   date,
   user,
-  uid
+  uid,
+  setGames
 }) => {
   const [game, setGame] = useState({
     name: name || '',
@@ -95,12 +95,12 @@ const GameForm = ({
 
 GameForm.propTypes = {
   formTitle: PropTypes.string,
-  setGames: PropTypes.func,
+  user: PropTypes.any,
   gameFirebaseKey: PropTypes.string,
   name: PropTypes.string,
   date: PropTypes.string,
   uid: PropTypes.string,
-  user: PropTypes.any
+  setGames: PropTypes.func
 };
 
 export default GameForm;

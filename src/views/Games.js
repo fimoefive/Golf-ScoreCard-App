@@ -6,7 +6,6 @@ import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
 
 function Games({
-  setUser,
   user,
   games,
   setGames
@@ -30,7 +29,7 @@ function Games({
           {!showAddGame
             ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD Player</Button>
             : <div>
-              <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
+              <Button className="closeForm" color="secondary" user={user} onClick={handleClick}>CLOSE</Button>
               <GameForm
                 setGames={setGames}
                 user={user}
@@ -44,9 +43,7 @@ function Games({
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
-            // uid={gameInfo.uid}
             user={user}
-            setUser={setUser}
             games={games}
             setGames={setGames}
           />
@@ -58,7 +55,6 @@ function Games({
 
 Games.propTypes = {
   user: PropTypes.any,
-  setUser: PropTypes.func,
   games: PropTypes.array,
   setGames: PropTypes.func
 };

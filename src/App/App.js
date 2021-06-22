@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase';
+// import 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
@@ -13,7 +13,7 @@ import './App.scss';
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [games, setGames] = useState([]);
   const [holes, setHoles] = useState([]);
 
@@ -30,19 +30,16 @@ function App() {
           user: authed.email.split('@')[0]
         };
         setUser(userInfoObj);
-        // getUserUid(userInfoObj).then((response) => {
-        getUserUid(authed.uid).then((response) => {
+        getUserUid(userInfoObj).then((response) => {
+          // getUserUid(authed.uid).then((response) => {
           if (Object.values(response.data).length === 0) {
-            // createUser(userInfoObj);
             createUser(userInfoObj).then((resp) => setUser(resp));
             // getLoggedInUser(userInfoObj);
             getUser(userInfoObj);
           }
         });
-        // else {
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         getGames(authed.uid).then((playerArray) => setGames(playerArray));
-        // getGames(authed.uid).then(setGames);
         setUser(userInfoObj);
       } else if (user || user === null) {
         setUser(false);

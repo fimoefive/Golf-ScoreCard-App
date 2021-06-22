@@ -7,7 +7,6 @@ import HoleForm from '../forms/HoleForm';
 
 function Holes({
   user,
-  setUser,
   holes,
   setHoles
 }) {
@@ -122,9 +121,7 @@ function Holes({
             avg={avg(holeInfo)}
             total={total(holeInfo)}
             golfScore={golfScore(holeInfo)}
-            // uid={holeInfo.uid}
             user={user}
-            setUser={setUser}
             holes={holes}
             setHoles={setHoles}
           />
@@ -136,7 +133,6 @@ function Holes({
 
 Holes.propTypes = {
   user: PropTypes.any,
-  setUser: PropTypes.func,
   holes: PropTypes.array,
   setHoles: PropTypes.func
 };

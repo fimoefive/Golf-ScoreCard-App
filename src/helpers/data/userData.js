@@ -9,6 +9,12 @@ const getUser = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getUserUid = (user) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/user.json?orderBy="uid"&equalTo="${user.uid}"`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 const createUser = (userObject) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/user.json`, userObject)
     .then((response) => {
@@ -20,14 +26,8 @@ const createUser = (userObject) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const getUserUid = (user) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/user.json?orderBy="uid"&equalTo="${user.uid}"`)
-    .then((response) => resolve(response))
-    .catch((error) => reject(error));
-});
-
 export {
   getUser,
-  createUser,
-  getUserUid
+  getUserUid,
+  createUser
 };

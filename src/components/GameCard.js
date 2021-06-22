@@ -11,11 +11,11 @@ import { deleteGame } from '../helpers/data/gameData';
 import GameForm from '../forms/GameForm';
 
 const GameCard = ({
-  // uid,
-  user,
   gameFirebaseKey,
+  user,
   name,
   date,
+  uid,
   setGames
 }) => {
   const [editing, setEditing] = useState(false);
@@ -55,7 +55,7 @@ const GameCard = ({
             user={user}
             name={name}
             date={date}
-            // uid={uid}
+            uid={uid}
             setGames={setGames}
           />
         }
@@ -69,7 +69,7 @@ GameCard.propTypes = {
   gameFirebaseKey: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  // uid: PropTypes.string,
+  uid: PropTypes.string,
   setGames: PropTypes.func
 };
 

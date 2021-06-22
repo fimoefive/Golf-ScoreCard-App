@@ -9,7 +9,6 @@ import { addHole, updateHole } from '../helpers/data/holeData';
 
 const HoleForm = ({
   formTitle,
-  setHoles,
   course,
   hole1,
   hole2,
@@ -22,7 +21,8 @@ const HoleForm = ({
   hole9,
   firebaseKey,
   user,
-  uid
+  uid,
+  setHoles,
 }) => {
   const [hole, setHole] = useState({
     course: course || '',
@@ -206,7 +206,7 @@ const HoleForm = ({
 
 HoleForm.propTypes = {
   formTitle: PropTypes.string,
-  setHoles: PropTypes.func,
+  user: PropTypes.any,
   setTotal: PropTypes.func,
   firebaseKey: PropTypes.string,
   course: PropTypes.string,
@@ -220,7 +220,7 @@ HoleForm.propTypes = {
   hole8: PropTypes.string,
   hole9: PropTypes.string,
   uid: PropTypes.string,
-  user: PropTypes.any
+  setHoles: PropTypes.func
 };
 
 export default HoleForm;
