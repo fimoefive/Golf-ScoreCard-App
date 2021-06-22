@@ -23,20 +23,20 @@ function Routes({
             exact
             path='/games'
             user={user}
-            component={() => <Games
+            component={() => (<Games
               user={user}
               games={games}
-              setGames={setGames} />}
+              setGames={setGames} />)}
           />
           <Route
             user={user}
             path='/games/:gameFirebaseKey'
-            component={SingleGame}
+            component={() => <SingleGame user={user} />}
           />
           <Route
             exact
             path='/holes'
-            // user={user}
+            user={user}
             component={() => <Holes
               user={user}
               holes={holes}
@@ -44,9 +44,9 @@ function Routes({
             />}
           />
           <Route
-            // user={user}
+            user={user}
             path='/holes/:firebaseKey'
-            component={SingleHole}
+            component={() => <SingleHole user={user} />}
           />
           <Route path='*' component={Main} />
         </Switch>
@@ -56,11 +56,11 @@ function Routes({
 }
 
 Routes.propTypes = {
+  user: PropTypes.any,
   games: PropTypes.array,
   setGames: PropTypes.func,
   holes: PropTypes.array,
-  setHoles: PropTypes.func,
-  user: PropTypes.any
+  setHoles: PropTypes.func
 };
 
 export default Routes;

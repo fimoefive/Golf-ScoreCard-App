@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import { getGames } from '../helpers/data/gameData';
+// import { getGames } from '../helpers/data/gameData';
 import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
 
-function Games({ user }) {
+function Games({
+  user,
+  games,
+  setGames
+}) {
   const [showAddGame, setAddGame] = useState(false);
-  const [games, setGames] = useState([]);
+  // const [games, setGames] = useState([]);
 
   const handleClick = () => {
     setAddGame((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    getGames().then(setGames);
-  }, []);
+  // useEffect(() => {
+  //   // getGames().then(setGames);
+  //   getGames(user).then((playersArray) => setGames(playersArray));
+  // }, [games.length]);
 
   return (
     <>
       <div className="game-container">
         <div>
           {!showAddGame
-            ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD GAME</Button>
+            ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD Player</Button>
             : <div>
-              <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
+              <Button className="closeForm" color="secondary" user={user} onClick={handleClick}>CLOSE</Button>
               <GameForm
                 setGames={setGames}
                 user={user}
@@ -38,9 +43,8 @@ function Games({ user }) {
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
-            uid={gameInfo.uid}
             user={user}
-            // games={games}
+            games={games}
             setGames={setGames}
           />
         ))}
@@ -50,9 +54,9 @@ function Games({ user }) {
 }
 
 Games.propTypes = {
+  user: PropTypes.any,
   games: PropTypes.array,
-  setGames: PropTypes.func,
-  user: PropTypes.any
+  setGames: PropTypes.func
 };
 
 export default Games;

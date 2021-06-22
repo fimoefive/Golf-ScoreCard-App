@@ -11,7 +11,6 @@ import { deleteHole } from '../helpers/data/holeData';
 import HoleForm from '../forms/HoleForm';
 
 const HoleCard = ({
-  uid,
   user,
   firebaseKey,
   gameFirebaseKey,
@@ -28,6 +27,7 @@ const HoleCard = ({
   total,
   avg,
   golfScore,
+  uid,
   setHoles
 }) => {
   const [editing, setEditing] = useState(false);
@@ -36,7 +36,7 @@ const HoleCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteHole(firebaseKey, user)
+        deleteHole(firebaseKey, user.uid)
           .then(setHoles);
         break;
       case 'edit':
@@ -52,7 +52,7 @@ const HoleCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" id={uid}>
+      <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">Course: {course}</CardTitle>
         <CardText type="text">Hole 1</CardText>
         <div id='hole1' type='number'>{hole1}</div>
@@ -75,16 +75,16 @@ const HoleCard = ({
         <div id='total' type='number'>Total: {total}</div>
         <div id='avg' type='number'>Average: {avg}</div>
         <div id='golfScore' type='string'>{golfScore}</div>
-        <Button color="warning" onClick={() => handleClick('view')}>View Hole</Button>
-        <Button color="danger" onClick={() => handleClick('delete')}>Delete Hole</Button>
+        <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
+        <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
-          {editing ? 'CloseForm' : 'Edit Hole'}
+          {editing ? 'CloseForm' : 'Edit Game'}
         </Button>
         {
           editing && <HoleForm
-            formTitle='Edit Hole'
+            formTitle='Edit Game'
             firebaseKey={firebaseKey}
-            uid={uid}
+            // uid={uid}
             user={user}
             gameFirebaseKey={gameFirebaseKey}
             course={course}
@@ -100,6 +100,7 @@ const HoleCard = ({
             total={total}
             avg={avg}
             golfScore={golfScore}
+            uid={uid}
             setHoles={setHoles}
           />
         }
@@ -109,7 +110,6 @@ const HoleCard = ({
 };
 
 HoleCard.propTypes = {
-  uid: PropTypes.string,
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   gameFirebaseKey: PropTypes.string,
@@ -126,6 +126,7 @@ HoleCard.propTypes = {
   total: PropTypes.number,
   avg: PropTypes.string,
   golfScore: PropTypes.string,
+  uid: PropTypes.string,
   setHoles: PropTypes.func
 };
 

@@ -11,11 +11,11 @@ import { deleteGame } from '../helpers/data/gameData';
 import GameForm from '../forms/GameForm';
 
 const GameCard = ({
-  uid,
-  user,
   gameFirebaseKey,
+  user,
   name,
   date,
+  uid,
   setGames
 }) => {
   const [editing, setEditing] = useState(false);
@@ -24,7 +24,7 @@ const GameCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteGame(gameFirebaseKey, user)
+        deleteGame(gameFirebaseKey, user.uid)
           .then(setGames);
         break;
       case 'edit':
@@ -40,22 +40,22 @@ const GameCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" id={uid}>
+      <CardBody body="true" className="card text-center">
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText>Date: {date}</CardText>
-        <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
-        <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
+        <Button color="warning" onClick={() => handleClick('view')}>View Player</Button>
+        <Button color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
-          {editing ? 'CloseForm' : 'Edit Game'}
+          {editing ? 'CloseForm' : 'Edit Player'}
         </Button>
         {
           editing && <GameForm
-            formTitle='Edit Game'
+            formTitle='Edit Player'
             gameFirebaseKey={gameFirebaseKey}
-            uid={uid}
             user={user}
             name={name}
             date={date}
+            uid={uid}
             setGames={setGames}
           />
         }
@@ -65,11 +65,11 @@ const GameCard = ({
 };
 
 GameCard.propTypes = {
-  uid: PropTypes.string,
   user: PropTypes.any,
   gameFirebaseKey: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  uid: PropTypes.string,
   setGames: PropTypes.func
 };
 
