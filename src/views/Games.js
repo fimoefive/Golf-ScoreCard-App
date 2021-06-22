@@ -5,6 +5,7 @@ import { Button } from 'reactstrap';
 import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
 // import Holes from './Holes';
+// import { getHoles } from '../helpers/data/holeData';
 
 function Games({
   user,
@@ -13,6 +14,7 @@ function Games({
 }) {
   const [showAddGame, setAddGame] = useState(false);
   // const [games, setGames] = useState([]);
+  // const [holes, setHoles] = useState([]);
 
   const handleClick = () => {
     setAddGame((prevState) => !prevState);
@@ -23,12 +25,22 @@ function Games({
   //   getGames(user).then((playersArray) => setGames(playersArray));
   // }, [games.length]);
 
-  function playerAvg(gameInfo) {
-    let average = 0;
-    average += Number(gameInfo.length);
+  // const totalAvg = getHoles(holes.uid).then((gamesArray) => setHoles(gamesArray)).reduce(
+  //   (previousScore, currentScore) => previousScore + currentScore,
+  //   0
+  // );
+  // console.warn(totalAvg);
 
-    return average;
-  }
+  // function playerAvg(gameInfo) {
+  //   const gameAverage = getHoles.length;
+  //   // const gameAverage = Holes(avg);
+  //   // average += Number(gameInfo.length);
+  //   let average = 0;
+  //   for (let i = 0; i < gameAverage; i) {
+  //     average = Number(gameInfo.length) || 0;
+  //   }
+  //   return average;
+  // }
 
   return (
     <>
@@ -51,7 +63,8 @@ function Games({
             gameFirebaseKey={gameInfo.gameFirebaseKey}
             name={gameInfo.name}
             date={gameInfo.date}
-            playerAvg={playerAvg(gameInfo)}
+            // playerAvg={playerAvg(gameInfo)}
+            // totalAVG={totalAvg(gameInfo)}
             user={user}
             games={games}
             setGames={setGames}
