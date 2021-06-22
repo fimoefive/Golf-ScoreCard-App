@@ -36,7 +36,7 @@ const HoleCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteHole(firebaseKey, user)
+        deleteHole(firebaseKey, user.uid)
           .then(setHoles);
         break;
       case 'edit':
