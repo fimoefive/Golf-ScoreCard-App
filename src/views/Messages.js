@@ -31,7 +31,7 @@ function Messages({
           }
         </div>
         {messages.map((messageInfo) => (
-          <MessageCard className="holeCard"
+          <MessageCard className="messageCard"
             key={messageInfo.firebaseKey}
             firebaseKey={messageInfo.firebaseKey}
             message={messageInfo.message}
@@ -48,9 +48,9 @@ function Messages({
 }
 
 Messages.propTypes = {
+  user: PropTypes.any,
   messages: PropTypes.array,
-  setMessages: PropTypes.func,
-  user: PropTypes.any
+  setMessages: PropTypes.func
 };
 
 export default Messages;
