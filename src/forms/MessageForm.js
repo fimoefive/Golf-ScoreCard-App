@@ -10,9 +10,9 @@ import { addMessage, updateMessage } from '../helpers/data/messageData';
 const MessageForm = ({
   formTitle,
   user,
+  firebaseKey,
   message,
   timestamp,
-  firebaseKey,
   uid,
   setMessages,
 }) => {
@@ -34,10 +34,10 @@ const MessageForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (message.firebaseKey) {
-      updateMessage(mess, user).then((messageArray) => setMessages(messageArray));
+    if (mess.firebaseKey) {
+      updateMessage(mess, user.uid).then((messageArray) => setMessages(messageArray));
     } else {
-      addMessage(mess, user).then((response) => {
+      addMessage(mess, user.uid).then((response) => {
         setMessages(response);
         history.push('/messages');
       });
@@ -65,8 +65,8 @@ const MessageForm = ({
             <Input
               name='message'
               id='message'
-              value={message.message}
-              type='number'
+              value={mess.message}
+              type='text'
               placeholder='Enter Message'
               onChange={handleInputChange}
             />
@@ -77,7 +77,7 @@ const MessageForm = ({
             <Input
               name='timestamp'
               id='timestamp'
-              value={message.timestamp}
+              value={mess.timestamp}
               type='number'
               placeholder='Enter Date'
               onChange={handleInputChange}

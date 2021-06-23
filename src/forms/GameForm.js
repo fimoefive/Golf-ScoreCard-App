@@ -9,10 +9,10 @@ import { addGame, updateGame } from '../helpers/data/gameData';
 
 const GameForm = ({
   formTitle,
+  user,
   gameFirebaseKey,
   name,
   date,
-  user,
   uid,
   setGames
 }) => {
