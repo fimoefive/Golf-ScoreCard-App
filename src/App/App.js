@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import { getGames } from '../helpers/data/gameData';
 import { getHoles } from '../helpers/data/holeData';
+import { getMessages } from '../helpers/data/messageData';
 import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
 import './App.scss';
@@ -37,6 +38,7 @@ function App() {
         });
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         getGames(authed.uid).then((playerArray) => setGames(playerArray));
+        getMessages(authed.uid).then((messageArray) => setMessages(messageArray));
         setUser(userInfoObj);
       } else if (user || user === null) {
         setUser(false);
