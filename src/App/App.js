@@ -12,6 +12,7 @@ function App() {
   const [user, setUser] = useState({});
   const [games, setGames] = useState([]);
   const [holes, setHoles] = useState([]);
+  const [messages, setMessages] = useState([]);
 
   // const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
@@ -54,6 +55,8 @@ function App() {
           setGames={setGames}
           holes={holes}
           setHoles={setHoles}
+          messages={messages}
+          setMessages={setMessages}
         />
       </Router>
     </div>

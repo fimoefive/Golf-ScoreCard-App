@@ -21,14 +21,8 @@ const addHole = (hole, uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-// const addHole = (hole) => new Promise((resolve, reject) => {
-//   axios.post(`${dbUrl}/holes.json`, hole)
-//     .then((response) => {
-//       const body = { firebaseKey: response.data.name };
 //       axios.patch(`${dbUrl}/holes/${response.data.name}.json`, body)
-//         .then(() => resolve(response.data.name));
-//     }).catch((error) => reject(error));
-// });
+//         .then((uid) => resolve(response.data.name));
 
 const deleteHole = (firebaseKey, uid) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/holes/${firebaseKey}.json`)

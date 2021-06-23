@@ -6,7 +6,7 @@ import Games from '../views/Games';
 import SingleGame from '../views/SingleGame';
 import Holes from '../views/Holes';
 import SingleHole from '../views/SingleHole';
-// import Messages from '../views/Messages';
+import Messages from '../views/Messages';
 
 function Routes({
   user,
@@ -14,8 +14,8 @@ function Routes({
   setGames,
   holes,
   setHoles,
-  //   messages,
-  //   setMessages
+  messages,
+  setMessages
 }) {
   return (
     <>
@@ -51,7 +51,7 @@ function Routes({
             path='/holes/:firebaseKey'
             component={() => <SingleHole user={user} />}
           />
-          {/* <Route
+          <Route
             exact
             path='/messages'
             user={user}
@@ -61,7 +61,7 @@ function Routes({
               setMessages={setMessages}
             />}
           />
-          */}
+
           <Route path='*' component={Main} />
         </Switch>
       </div>

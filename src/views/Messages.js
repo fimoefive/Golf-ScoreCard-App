@@ -4,8 +4,11 @@ import { Button } from 'reactstrap';
 import MessageCard from '../components/MessageCard';
 import MessageForm from '../forms/HoleForm';
 
-function Messages({ user }) {
-  const [messages, setMessages] = useState([]);
+function Messages({
+  user,
+  messages,
+  setMessages
+}) {
   const [showAddMessage, setAddMessage] = useState(false);
 
   const handleClick = () => {
@@ -35,6 +38,7 @@ function Messages({ user }) {
             timestamp={messageInfo.timestamp}
             uid={messageInfo.uid}
             user={user}
+            messages={messages}
             setMessages={setMessages}
           />
         ))}
