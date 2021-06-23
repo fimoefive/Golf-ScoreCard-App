@@ -1,46 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 // import { getGames } from '../helpers/data/gameData';
-import GameCard from '../components/GameCard';
+// import GameCard from '../components/GameCard';
 import GameForm from '../forms/GameForm';
-// import Holes from './Holes';
-// import { getHoles } from '../helpers/data/holeData';
+import { getHoles } from '../helpers/data/holeData';
 
 function Games({
   user,
-  games,
-  setGames
+  // name,
+  // games,
+  setGames,
+  // holes,
+  // setHoles
 }) {
   const [showAddGame, setAddGame] = useState(false);
   // const [games, setGames] = useState([]);
-  // const [holes, setHoles] = useState([]);
+  const [playerAverage, setPlayerAverage] = useState(0);
 
   const handleClick = () => {
     setAddGame((prevState) => !prevState);
   };
 
-  // useEffect(() => {
-  //   // getGames().then(setGames);
-  //   getGames(user).then((playersArray) => setGames(playersArray));
-  // }, [games.length]);
-
-  // const totalAvg = getHoles(holes.uid).then((gamesArray) => setHoles(gamesArray)).reduce(
-  //   (previousScore, currentScore) => previousScore + currentScore,
-  //   0
-  // );
-  // console.warn(totalAvg);
-
-  // function playerAvg(gameInfo) {
-  //   const gameAverage = getHoles.length;
-  //   // const gameAverage = Holes(avg);
-  //   // average += Number(gameInfo.length);
-  //   let average = 0;
-  //   for (let i = 0; i < gameAverage; i) {
-  //     average = Number(gameInfo.length) || 0;
-  //   }
-  //   return average;
-  // }
+  useEffect(() => {
+    getHoles(user.uid).then((holesArray) => {
+      let average = 0;
+      holesArray.forEach((holes) => {
+        average += Number(holes.hole1);
+        average += Number(holes.hole2);
+        average += Number(holes.hole3);
+        average += Number(holes.hole4);
+        average += Number(holes.hole5);
+        average += Number(holes.hole6);
+        average += Number(holes.hole7);
+        average += Number(holes.hole8);
+        average += Number(holes.hole9);
+      });
+      //   average += Number(holesArray[i].hole2);
+      //   average += Number(holesArray[i].hole3););
+      // for (let i = 0; i < holesArray.length; i = +1) {
+      //   average += Number(holesArray[i].hole1);
+      //   average += Number(holesArray[i].hole2);
+      //   average += Number(holesArray[i].hole3);
+      // }
+      // console.warn(average);
+      setPlayerAverage(average / holesArray.length);
+    });
+  }, []);
 
   return (
     <>
@@ -57,19 +63,8 @@ function Games({
             </div>
           }
         </div>
-        {games.map((gameInfo) => (
-          <GameCard className="gameCard"
-            key={gameInfo.gameFirebaseKey}
-            gameFirebaseKey={gameInfo.gameFirebaseKey}
-            name={gameInfo.name}
-            date={gameInfo.date}
-            // playerAvg={playerAvg(gameInfo)}
-            // totalAVG={totalAvg(gameInfo)}
-            user={user}
-            games={games}
-            setGames={setGames}
-          />
-        ))}
+        <h2>Player Name: {user.fullName}</h2>
+        <h2>Player Average: {playerAverage}</h2>
       </div>
     </>
   );
