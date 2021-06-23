@@ -5,18 +5,18 @@ import {
   FormGroup, Label, Input
 } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import { addMessage, updateMessage } from '../helpers/data/holeData';
+import { addMessage, updateMessage } from '../helpers/data/messageData';
 
 const MessageForm = ({
   formTitle,
-  setMessages,
+  user,
   message,
   timestamp,
   firebaseKey,
-  user,
-  uid
+  uid,
+  setMessages,
 }) => {
-  const [hole, setHole] = useState({
+  const [mess, setMessage] = useState({
     message: message || '',
     timestamp: timestamp || '',
     firebaseKey: firebaseKey || null,
@@ -24,7 +24,7 @@ const MessageForm = ({
   });
 
   const handleInputChange = (e) => {
-    setHole((prevState) => ({
+    setMessage((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -34,16 +34,16 @@ const MessageForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (hole.firebaseKey) {
-      updateMessage(message, user).then((holeArray) => setMessages(holeArray));
+    if (message.firebaseKey) {
+      updateMessage(mess, user).then((messageArray) => setMessages(messageArray));
     } else {
-      addMessage(message, user).then((response) => {
+      addMessage(mess, user).then((response) => {
         setMessages(response);
         history.push('/messages');
       });
 
       // Clears Input Fields
-      setHole({
+      setMessage({
         message: '',
         timestamp: '',
         firebaseKey: null
@@ -65,9 +65,9 @@ const MessageForm = ({
             <Input
               name='message'
               id='message'
-              value={hole.message}
+              value={message.message}
               type='number'
-              placeholder='Enter Round'
+              placeholder='Enter Message'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -77,9 +77,9 @@ const MessageForm = ({
             <Input
               name='timestamp'
               id='timestamp'
-              value={hole.timestamp}
+              value={message.timestamp}
               type='number'
-              placeholder='Enter Par'
+              placeholder='Enter Date'
               onChange={handleInputChange}
             />
           </FormGroup>
@@ -95,12 +95,12 @@ const MessageForm = ({
 
 MessageForm.propTypes = {
   formTitle: PropTypes.string,
-  setMessages: PropTypes.func,
+  user: PropTypes.any,
   firebaseKey: PropTypes.string,
-  message: PropTypes.number,
+  message: PropTypes.string,
   timestamp: PropTypes.number,
   uid: PropTypes.string,
-  user: PropTypes.any
+  setMessages: PropTypes.func
 };
 
 export default MessageForm;

@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom';
 import {
   Button,
   CardBody,
-  // CardText,
+  CardText,
   CardTitle
 } from 'reactstrap';
-import { deleteMessage } from '../helpers/data/holeData';
+import { deleteMessage } from '../helpers/data/messageData';
 import MessageForm from '../forms/MessageForm';
 
 const MessageCard = ({
@@ -42,7 +42,7 @@ const MessageCard = ({
     <>
       <CardBody body="true" className="card text-center" id={uid}>
         <CardTitle tag="h5" type="number">Message: {message}</CardTitle>
-        <CardTitle type="number">Date: {timestamp}</CardTitle>
+        <CardText type="number">Date: {timestamp}</CardText>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
           {editing ? 'CloseForm' : 'Edit Message'}
@@ -68,7 +68,7 @@ MessageCard.propTypes = {
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   message: PropTypes.string,
-  timestamp: PropTypes.number,
+  timestamp: PropTypes.string,
   setMessages: PropTypes.func
 };
 

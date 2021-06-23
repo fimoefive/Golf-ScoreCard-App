@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import MessageCard from '../components/HoleCard';
+import MessageCard from '../components/MessageCard';
 import MessageForm from '../forms/HoleForm';
 
 function Messages({ user }) {
   const [messages, setMessages] = useState([]);
-  const [showAddHole, setAddHole] = useState(false);
+  const [showAddMessage, setAddMessage] = useState(false);
 
   const handleClick = () => {
-    setAddHole((prevState) => !prevState);
+    setAddMessage((prevState) => !prevState);
   };
 
   return (
     <>
       <div className="message-container">
         <div>
-          {!showAddHole
+          {!showAddMessage
             ? <Button className="addMessageBtn" color="primary" user={user} onClick={handleClick}>ADD Message</Button>
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
@@ -28,7 +28,7 @@ function Messages({ user }) {
           }
         </div>
         {messages.map((messageInfo) => (
-          <HoleCard className="holeCard"
+          <MessageCard className="holeCard"
             key={messageInfo.firebaseKey}
             firebaseKey={messageInfo.firebaseKey}
             message={messageInfo.message}
