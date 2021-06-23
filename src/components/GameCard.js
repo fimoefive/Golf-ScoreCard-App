@@ -16,7 +16,6 @@ const GameCard = ({
   name,
   date,
   playerAvg,
-  avgPlayer,
   uid,
   setGames
 }) => {
@@ -46,7 +45,6 @@ const GameCard = ({
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText>Date: {date}</CardText>
         <CardText id='avg' type='number'>Player Average: {playerAvg}</CardText>
-        <div>{avgPlayer}</div>
         <Button color="warning" onClick={() => handleClick('view')}>View Player</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -60,7 +58,6 @@ const GameCard = ({
             name={name}
             date={date}
             uid={uid}
-            avgPlayer={avgPlayer}
             playerAvg={playerAvg}
             setGames={setGames}
           />
@@ -76,7 +73,6 @@ GameCard.propTypes = {
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   playerAvg: PropTypes.number,
-  avgPlayer: PropTypes.number,
   uid: PropTypes.string,
   setGames: PropTypes.func
 };

@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { Button } from 'reactstrap';
-// import { getGames } from '../helpers/data/gameData';
 // import GameCard from '../components/GameCard';
 // import GameForm from '../forms/GameForm';
 import { getHoles } from '../helpers/data/holeData';
 
 function Games({
   user,
-  // name,
   // games,
-  // setGames,
-  // holes,
-  // setHoles
+  // setGames
 }) {
   // const [showAddGame, setAddGame] = useState(false);
   // const [games, setGames] = useState([]);
@@ -36,14 +31,6 @@ function Games({
         average += Number(holes.hole8);
         average += Number(holes.hole9);
       });
-      //   average += Number(holesArray[i].hole2);
-      //   average += Number(holesArray[i].hole3););
-      // for (let i = 0; i < holesArray.length; i = +1) {
-      //   average += Number(holesArray[i].hole1);
-      //   average += Number(holesArray[i].hole2);
-      //   average += Number(holesArray[i].hole3);
-      // }
-      // console.warn(average);
       setPlayerAverage(average / holesArray.length);
     });
   }, []);

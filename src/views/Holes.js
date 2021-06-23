@@ -23,7 +23,6 @@ function Holes({
   // }, []);
 
   function total(holeInfo) {
-    // console.warn(holeInfo);
     let hole = 0;
     hole += Number(holeInfo.hole1);
     hole += Number(holeInfo.hole2);
@@ -34,14 +33,11 @@ function Holes({
     hole += Number(holeInfo.hole7);
     hole += Number(holeInfo.hole8);
     hole += Number(holeInfo.hole9);
-    // console.warn(hole);
-    // hole /= 9;
-    // console.warn(holeInfo[`hole${2}`]);
+
     return hole;
   }
 
   function avg(holeInfo) {
-    // console.warn(holeInfo);
     let hole = 0;
     hole += Number(holeInfo.hole1);
     hole += Number(holeInfo.hole2);
@@ -52,9 +48,7 @@ function Holes({
     hole += Number(holeInfo.hole7);
     hole += Number(holeInfo.hole8);
     hole += Number(holeInfo.hole9);
-    // console.warn(hole);
     hole /= 9;
-    // console.warn(holeInfo[`hole${2}`]);
     return hole.toFixed(2);
   }
 
