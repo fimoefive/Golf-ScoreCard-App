@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 // import { getGames } from '../helpers/data/gameData';
 // import GameCard from '../components/GameCard';
-import GameForm from '../forms/GameForm';
+// import GameForm from '../forms/GameForm';
 import { getHoles } from '../helpers/data/holeData';
 
 function Games({
   user,
   // name,
   // games,
-  setGames,
+  // setGames,
   // holes,
   // setHoles
 }) {
-  const [showAddGame, setAddGame] = useState(false);
+  // const [showAddGame, setAddGame] = useState(false);
   // const [games, setGames] = useState([]);
   const [playerAverage, setPlayerAverage] = useState(0);
 
-  const handleClick = () => {
-    setAddGame((prevState) => !prevState);
-  };
+  // const handleClick = () => {
+  //   setAddGame((prevState) => !prevState);
+  // };
 
   useEffect(() => {
     getHoles(user.uid).then((holesArray) => {
@@ -52,7 +52,7 @@ function Games({
     <>
       <div className="game-container">
         <div>
-          {!showAddGame
+          {/* {!showAddGame
             ? <Button className="addGameBtn" color="primary" user={user} onClick={handleClick}>ADD Player</Button>
             : <div>
               <Button className="closeForm" color="secondary" user={user} onClick={handleClick}>CLOSE</Button>
@@ -61,7 +61,7 @@ function Games({
                 user={user}
               />
             </div>
-          }
+          } */}
         </div>
         <h2>Player Name: {user.fullName}</h2>
         <h2>Player Average: {playerAverage.toFixed(2)}</h2>
@@ -72,8 +72,8 @@ function Games({
 
 Games.propTypes = {
   user: PropTypes.any,
-  games: PropTypes.array,
-  setGames: PropTypes.func
+  // games: PropTypes.array,
+  // setGames: PropTypes.func
 };
 
 export default Games;
