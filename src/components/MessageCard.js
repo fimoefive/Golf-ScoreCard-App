@@ -11,11 +11,11 @@ import { deleteMessage } from '../helpers/data/messageData';
 import MessageForm from '../forms/MessageForm';
 
 const MessageCard = ({
-  uid,
   user,
   firebaseKey,
   message,
   timestamp,
+  uid,
   setMessages
 }) => {
   const [editing, setEditing] = useState(false);
@@ -24,7 +24,7 @@ const MessageCard = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteMessage(firebaseKey, user)
+        deleteMessage(firebaseKey, user.uid)
           .then(setMessages);
         break;
       case 'edit':
@@ -40,8 +40,8 @@ const MessageCard = ({
 
   return (
     <>
-      <CardBody body="true" className="card text-center" id={uid}>
-        <CardTitle tag="h5" type="number">Message: {message}</CardTitle>
+      <CardBody body="true" className="card text-center">
+        <CardTitle tag="h5" type="text">Message: {message}</CardTitle>
         <CardText type="number">Date: {timestamp}</CardText>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -50,11 +50,11 @@ const MessageCard = ({
         {
           editing && <MessageForm
             formTitle='Edit Message'
-            firebaseKey={firebaseKey}
-            uid={uid}
             user={user}
+            firebaseKey={firebaseKey}
             message={message}
             timestamp={timestamp}
+            uid={uid}
             setMessages={setMessages}
           />
         }
@@ -64,11 +64,11 @@ const MessageCard = ({
 };
 
 MessageCard.propTypes = {
-  uid: PropTypes.string,
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   message: PropTypes.string,
   timestamp: PropTypes.string,
+  uid: PropTypes.string,
   setMessages: PropTypes.func
 };
 
