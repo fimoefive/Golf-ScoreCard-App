@@ -7,7 +7,7 @@ import {
 import { useHistory } from 'react-router-dom';
 import { addMessage, updateMessage } from '../helpers/data/holeData';
 
-const HoleForm = ({
+const MessageForm = ({
   formTitle,
   setMessages,
   message,
@@ -93,7 +93,7 @@ const HoleForm = ({
   );
 };
 
-HoleForm.propTypes = {
+MessageForm.propTypes = {
   formTitle: PropTypes.string,
   setMessages: PropTypes.func,
   firebaseKey: PropTypes.string,
@@ -103,4 +103,4 @@ HoleForm.propTypes = {
   user: PropTypes.any
 };
 
-export default HoleForm;
+export default MessageForm;

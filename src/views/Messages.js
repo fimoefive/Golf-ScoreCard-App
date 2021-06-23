@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 import MessageCard from '../components/HoleCard';
 import MessageForm from '../forms/HoleForm';
 
-function Holes({ user }) {
+function Messages({ user }) {
   const [messages, setMessages] = useState([]);
   const [showAddHole, setAddHole] = useState(false);
 
@@ -43,10 +43,10 @@ function Holes({ user }) {
   );
 }
 
-Holes.propTypes = {
+Messages.propTypes = {
   messages: PropTypes.array,
   setMessages: PropTypes.func,
   user: PropTypes.any
 };
 
-export default Holes;
+export default Messages;
