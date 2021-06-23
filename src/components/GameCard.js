@@ -15,6 +15,7 @@ const GameCard = ({
   user,
   name,
   date,
+  playerAvg,
   uid,
   setGames
 }) => {
@@ -43,6 +44,7 @@ const GameCard = ({
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5">{name}</CardTitle>
         <CardText>Date: {date}</CardText>
+        <CardText id='avg' type='number'>Player Average: {playerAvg}</CardText>
         <Button color="warning" onClick={() => handleClick('view')}>View Player</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Player</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -56,6 +58,7 @@ const GameCard = ({
             name={name}
             date={date}
             uid={uid}
+            playerAvg={playerAvg}
             setGames={setGames}
           />
         }
@@ -69,6 +72,7 @@ GameCard.propTypes = {
   gameFirebaseKey: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  playerAvg: PropTypes.number,
   uid: PropTypes.string,
   setGames: PropTypes.func
 };

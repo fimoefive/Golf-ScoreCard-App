@@ -26,7 +26,6 @@ const HoleCard = ({
   hole9,
   total,
   avg,
-  golfScore,
   uid,
   setHoles
 }) => {
@@ -74,7 +73,6 @@ const HoleCard = ({
         <div id='hole9' type='number'>{hole9}</div>
         <div id='total' type='number'>Total: {total}</div>
         <div id='avg' type='number'>Average: {avg}</div>
-        <div id='golfScore' type='string'>{golfScore}</div>
         <Button color="warning" onClick={() => handleClick('view')}>View Game</Button>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Game</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
@@ -84,7 +82,6 @@ const HoleCard = ({
           editing && <HoleForm
             formTitle='Edit Game'
             firebaseKey={firebaseKey}
-            // uid={uid}
             user={user}
             gameFirebaseKey={gameFirebaseKey}
             course={course}
@@ -99,7 +96,6 @@ const HoleCard = ({
             hole9={hole9}
             total={total}
             avg={avg}
-            golfScore={golfScore}
             uid={uid}
             setHoles={setHoles}
           />
@@ -125,7 +121,6 @@ HoleCard.propTypes = {
   hole9: PropTypes.string,
   total: PropTypes.number,
   avg: PropTypes.string,
-  golfScore: PropTypes.string,
   uid: PropTypes.string,
   setHoles: PropTypes.func
 };
