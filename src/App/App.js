@@ -3,11 +3,10 @@ import firebase from 'firebase/app';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import { createUser, getUserUid } from '../helpers/data/userData';
+import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 // import { getGames } from '../helpers/data/gameData';
 import { getHoles } from '../helpers/data/holeData';
 import { getMessages } from '../helpers/data/messageData';
-
 import Routes from '../helpers/Routes';
 import './App.scss';
 
@@ -30,17 +29,17 @@ function App() {
           user: authed.email.split('@')[0]
         };
         setUser(userInfoObj);
-        // getUserUid(userInfoObj).then((response) => {
-        getUserUid(authed.uid).then((response) => {
+        getUserUid(userInfoObj).then((response) => {
+          // getUserUid(authed.uid).then((response) => {
           if (Object.values(response.data).length === 0) {
             createUser(userInfoObj).then((resp) => setUser(resp));
             getLoggedInUser(userInfoObj);
-            // getUser(userInfoObj);
+            getUser(userInfoObj);
           }
         });
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         // getGames(authed.uid).then((playerArray) => setGames(playerArray));
-        getMessages(authed.uid).then((messageArray) => setMessages(messageArray));
+        getMessages().then((messageArray) => setMessages(messageArray));
         setUser(userInfoObj);
       } else if (user || user === null) {
         setUser(false);

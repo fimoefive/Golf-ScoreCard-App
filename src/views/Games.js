@@ -52,7 +52,7 @@ function Games({
         </div>
         <h2>Player Name: {user.fullName}</h2>
         <h2>Player Average: {playerAverage.toFixed(2)}</h2>
-        <image>{user.profileImage}</image>
+        {/* <image src="{user.profileImage}"></image> */}
       </div>
     </>
   );

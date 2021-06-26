@@ -78,7 +78,7 @@ const MessageForm = ({
               name='timestamp'
               id='timestamp'
               value={mess.timestamp}
-              type='number'
+              type='text'
               placeholder='Enter Date'
               onChange={handleInputChange}
             />

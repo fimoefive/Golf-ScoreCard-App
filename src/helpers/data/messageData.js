@@ -3,9 +3,9 @@ import firebaseConfig from '../apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getMessages = (uid) => new Promise((resolve, reject) => {
-  // axios.get(`${dbUrl}/messages.json`)
-  axios.get(`${dbUrl}/messages.json?orderBy="uid"&equalTo="${uid}"`)
+const getMessages = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/messages.json`)
+    // axios.get(`${dbUrl}/messages.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });

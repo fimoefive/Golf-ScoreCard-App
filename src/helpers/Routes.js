@@ -10,8 +10,8 @@ import Messages from '../views/Messages';
 
 function Routes({
   user,
-  // games,
-  // setGames,
+  games,
+  setGames,
   holes,
   setHoles,
   messages,
@@ -27,6 +27,8 @@ function Routes({
             path='/games'
             user={user}
             component={() => (<Games
+              games={games}
+              setGames={setGames}
               user={user}
             />)}
           />
@@ -71,8 +73,8 @@ function Routes({
 
 Routes.propTypes = {
   user: PropTypes.any,
-  // games: PropTypes.array,
-  // setGames: PropTypes.func,
+  games: PropTypes.array,
+  setGames: PropTypes.func,
   holes: PropTypes.array,
   setHoles: PropTypes.func,
   messages: PropTypes.array,

@@ -12,6 +12,7 @@ import MessageForm from '../forms/MessageForm';
 
 const MessageCard = ({
   user,
+  // messages,
   firebaseKey,
   message,
   timestamp,
@@ -55,6 +56,7 @@ const MessageCard = ({
             message={message}
             timestamp={timestamp}
             uid={uid}
+            // messages={messages}
             setMessages={setMessages}
           />
         }
@@ -65,6 +67,7 @@ const MessageCard = ({
 
 MessageCard.propTypes = {
   user: PropTypes.any,
+  // messages: PropTypes.array,
   firebaseKey: PropTypes.string.isRequired,
   message: PropTypes.string,
   timestamp: PropTypes.string,
