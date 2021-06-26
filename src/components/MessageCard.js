@@ -42,7 +42,7 @@ const MessageCard = ({
   return (
     <>
       <CardBody body="true" className="card text-center">
-        <CardTitle tag="h5" type="text">Message: {message}</CardTitle>
+        <CardTitle tag="h5" type="text">{message}</CardTitle>
         <CardText type="number">Date: {timestamp}</CardText>
         <CardText type="number">Player: {user.fullName}</CardText>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
