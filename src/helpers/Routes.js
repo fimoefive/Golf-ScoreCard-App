@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import Main from '../views/MainPage';
 import Games from '../views/Games';
-import SingleGame from '../views/SingleGame';
+// import SingleGame from '../views/SingleGame';
 import Holes from '../views/Holes';
 import SingleHole from '../views/SingleHole';
 import Messages from '../views/Messages';
 
 function Routes({
   user,
-  games,
-  setGames,
+  // games,
+  // setGames,
   holes,
   setHoles,
   messages,
@@ -28,14 +28,14 @@ function Routes({
             user={user}
             component={() => (<Games
               user={user}
-              games={games}
-              setGames={setGames} />)}
+            />)}
           />
+          {/*
           <Route
             user={user}
             path='/games/:gameFirebaseKey'
             component={() => <SingleGame user={user} />}
-          />
+          /> */}
           <Route
             exact
             path='/holes'
@@ -71,8 +71,8 @@ function Routes({
 
 Routes.propTypes = {
   user: PropTypes.any,
-  games: PropTypes.array,
-  setGames: PropTypes.func,
+  // games: PropTypes.array,
+  // setGames: PropTypes.func,
   holes: PropTypes.array,
   setHoles: PropTypes.func,
   messages: PropTypes.array,

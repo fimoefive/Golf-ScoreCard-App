@@ -1,17 +1,19 @@
 import firebase from 'firebase/app';
+// import firebase from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import { getGames } from '../helpers/data/gameData';
+import { getUser, createUser, getUserUid } from '../helpers/data/userData';
+// import { getGames } from '../helpers/data/gameData';
 import { getHoles } from '../helpers/data/holeData';
 import { getMessages } from '../helpers/data/messageData';
-import { getUser, createUser, getUserUid } from '../helpers/data/userData';
+
 import Routes from '../helpers/Routes';
 import './App.scss';
 
 function App() {
   const [user, setUser] = useState({});
-  const [games, setGames] = useState([]);
+  // const [games, setGames] = useState([]);
   const [holes, setHoles] = useState([]);
   const [messages, setMessages] = useState([]);
 
@@ -37,7 +39,7 @@ function App() {
           }
         });
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
-        getGames(authed.uid).then((playerArray) => setGames(playerArray));
+        // getGames(authed.uid).then((playerArray) => setGames(playerArray));
         getMessages(authed.uid).then((messageArray) => setMessages(messageArray));
         setUser(userInfoObj);
       } else if (user || user === null) {
@@ -53,8 +55,8 @@ function App() {
       <Router>
         <NavBar user={user} />
         <Routes user={user}
-          games={games}
-          setGames={setGames}
+          // games={games}
+          // setGames={setGames}
           holes={holes}
           setHoles={setHoles}
           messages={messages}
