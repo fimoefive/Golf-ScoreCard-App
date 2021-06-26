@@ -98,7 +98,7 @@ MessageForm.propTypes = {
   user: PropTypes.any,
   firebaseKey: PropTypes.string,
   message: PropTypes.string,
-  timestamp: PropTypes.number,
+  timestamp: PropTypes.string,
   uid: PropTypes.string,
   setMessages: PropTypes.func
 };

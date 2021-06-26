@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import { getUser, createUser, getUserUid } from '../helpers/data/userData';
+import { createUser, getUserUid } from '../helpers/data/userData';
 // import { getGames } from '../helpers/data/gameData';
 import { getHoles } from '../helpers/data/holeData';
 import { getMessages } from '../helpers/data/messageData';
@@ -17,7 +17,7 @@ function App() {
   const [holes, setHoles] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  // const getLoggedInUser = () => firebase.auth().currentUser?.uid;
+  const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -30,12 +30,12 @@ function App() {
           user: authed.email.split('@')[0]
         };
         setUser(userInfoObj);
-        getUserUid(userInfoObj).then((response) => {
-          // getUserUid(authed.uid).then((response) => {
+        // getUserUid(userInfoObj).then((response) => {
+        getUserUid(authed.uid).then((response) => {
           if (Object.values(response.data).length === 0) {
             createUser(userInfoObj).then((resp) => setUser(resp));
-            // getLoggedInUser(userInfoObj);
-            getUser(userInfoObj);
+            getLoggedInUser(userInfoObj);
+            // getUser(userInfoObj);
           }
         });
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));

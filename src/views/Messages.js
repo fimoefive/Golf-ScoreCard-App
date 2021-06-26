@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import MessageCard from '../components/MessageCard';
-import MessageForm from '../forms/HoleForm';
+import MessageForm from '../forms/MessageForm';
 
 function Messages({
   user,
