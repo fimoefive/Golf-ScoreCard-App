@@ -11,8 +11,8 @@ import { deleteGame } from '../helpers/data/gameData';
 import GameForm from '../forms/GameForm';
 
 const GameCard = ({
-  gameFirebaseKey,
   user,
+  gameFirebaseKey,
   name,
   date,
   playerAvg,

@@ -24,6 +24,9 @@ const NavBar = ({ user }) => {
       <NavItem>
         <Link className="nav-link" to="/holes">Games</Link>
       </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/messages">Messages</Link>
+      </NavItem>
     </>
   );
 
