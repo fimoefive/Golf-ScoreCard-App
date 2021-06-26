@@ -44,6 +44,7 @@ const MessageCard = ({
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">Message: {message}</CardTitle>
         <CardText type="number">Date: {timestamp}</CardText>
+        <CardText type="number">Player: {user.fullName}</CardText>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
           {editing ? 'CloseForm' : 'Edit Message'}
