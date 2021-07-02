@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import {
   Button,
   CardBody,
@@ -12,7 +11,6 @@ import MessageForm from '../forms/MessageForm';
 
 const MessageCard = ({
   user,
-  // messages,
   firebaseKey,
   message,
   timestamp,
@@ -20,7 +18,6 @@ const MessageCard = ({
   setMessages
 }) => {
   const [editing, setEditing] = useState(false);
-  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
@@ -30,9 +27,6 @@ const MessageCard = ({
         break;
       case 'edit':
         setEditing((prevState) => !prevState);
-        break;
-      case 'view':
-        history.push(`/messages/${firebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
@@ -57,7 +51,6 @@ const MessageCard = ({
             message={message}
             timestamp={timestamp}
             uid={uid}
-            // messages={messages}
             setMessages={setMessages}
           />
         }
@@ -68,10 +61,9 @@ const MessageCard = ({
 
 MessageCard.propTypes = {
   user: PropTypes.any,
-  // messages: PropTypes.array,
   firebaseKey: PropTypes.string.isRequired,
   message: PropTypes.string,
-  timestamp: PropTypes.string,
+  timestamp: PropTypes.any,
   uid: PropTypes.string,
   setMessages: PropTypes.func
 };
