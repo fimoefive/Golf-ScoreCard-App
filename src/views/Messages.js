@@ -6,6 +6,7 @@ import MessageForm from '../forms/MessageForm';
 
 function Messages({
   user,
+  // loggedInUser,
   messages,
   setMessages
 }) {
@@ -24,8 +25,10 @@ function Messages({
             : <div>
               <Button className="closeForm" color="secondary" onClick={handleClick}>CLOSE</Button>
               <MessageForm
+                formTitle={'New Message'}
                 setMessages={setMessages}
                 user={user}
+              // userFirebaseKey={loggedInUser.firebaseKey}
               />
             </div>
           }
@@ -38,7 +41,7 @@ function Messages({
             timeStamp={messageInfo.timeStamp}
             uid={messageInfo.uid}
             user={user}
-            messages={messages}
+            // loggedInUser={loggedInUser.firebaseKey}
             setMessages={setMessages}
           />
         ))}
@@ -49,6 +52,7 @@ function Messages({
 
 Messages.propTypes = {
   user: PropTypes.any,
+  // loggedInUser: PropTypes.object,
   messages: PropTypes.array,
   setMessages: PropTypes.func
 };
