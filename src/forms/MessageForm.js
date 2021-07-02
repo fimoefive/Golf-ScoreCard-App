@@ -12,14 +12,14 @@ const MessageForm = ({
   user,
   firebaseKey,
   message,
-  timestamp,
+  timeStamp,
   uid,
   userFirebaseKey,
   setMessages
 }) => {
   const [mess, setMessage] = useState({
     message: message || '',
-    timestamp: timestamp || 'just now',
+    timeStamp: timeStamp || 'just now',
     userFirebaseKey,
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid
@@ -47,7 +47,7 @@ const MessageForm = ({
       // Clears Input Fields
       setMessage({
         message: '',
-        timestamp: '',
+        timeStamp: '',
         firebaseKey: null
       });
     }
@@ -74,7 +74,7 @@ const MessageForm = ({
             />
           </FormGroup>
 
-          <FormGroup>
+          {/* <FormGroup>
             <Label htmlFor="timestamp">Date: </Label>
             <Input
               name='timestamp'
@@ -84,7 +84,7 @@ const MessageForm = ({
               placeholder='Enter Date'
               onChange={handleInputChange}
             />
-          </FormGroup>
+          </FormGroup> */}
 
           <div>
             <Button className="messageSubmit" color="success" type='submit'>Submit</Button>
@@ -100,7 +100,7 @@ MessageForm.propTypes = {
   user: PropTypes.any,
   firebaseKey: PropTypes.string,
   message: PropTypes.string,
-  timestamp: PropTypes.string,
+  timeStamp: PropTypes.string,
   uid: PropTypes.string,
   userFirebaseKey: PropTypes.string,
   setMessages: PropTypes.func
