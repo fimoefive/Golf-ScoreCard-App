@@ -67,19 +67,19 @@ const MessageForm = ({
             <Input
               name='message'
               id='message'
-              value={mess.value}
               type='text'
               placeholder='Enter Message'
+              value={mess.value}
               onChange={handleInputChange}
             />
           </FormGroup>
 
           {/* <FormGroup>
-            <Label htmlFor="timestamp">Date: </Label>
+            <Label htmlFor="timeStamp">Date: </Label>
             <Input
-              name='timestamp'
-              id='timestamp'
-              value={mess.timestamp}
+              name='timeStamp'
+              id='timeStamp'
+              value={mess.timeStamp}
               type='text'
               placeholder='Enter Date'
               onChange={handleInputChange}

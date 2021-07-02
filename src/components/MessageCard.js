@@ -13,7 +13,7 @@ const MessageCard = ({
   user,
   firebaseKey,
   message,
-  timestamp,
+  timeStamp,
   uid,
   setMessages
 }) => {
@@ -37,8 +37,8 @@ const MessageCard = ({
     <>
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">{message}</CardTitle>
-        <CardText type="number">Date: {timestamp}</CardText>
-        <CardText type="number">Player: {user.fullName}</CardText>
+        <CardText type="number">Date: {timeStamp}</CardText>
+        <CardText type="text">Player: {user.fullName}</CardText>
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
           {editing ? 'CloseForm' : 'Edit Message'}
@@ -49,7 +49,7 @@ const MessageCard = ({
             user={user}
             firebaseKey={firebaseKey}
             message={message}
-            timestamp={timestamp}
+            timeStamp={timeStamp}
             uid={uid}
             setMessages={setMessages}
           />
@@ -63,7 +63,7 @@ MessageCard.propTypes = {
   user: PropTypes.any,
   firebaseKey: PropTypes.string.isRequired,
   message: PropTypes.string,
-  timestamp: PropTypes.any,
+  timeStamp: PropTypes.any,
   uid: PropTypes.string,
   setMessages: PropTypes.func
 };
