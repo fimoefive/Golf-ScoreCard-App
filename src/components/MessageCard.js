@@ -17,6 +17,7 @@ const MessageCard = ({
   timeStamp,
   uid,
   // userFirebaseKey,
+  // loggedUserKey,
   setMessages
 }) => {
   const [editing, setEditing] = useState(false);
