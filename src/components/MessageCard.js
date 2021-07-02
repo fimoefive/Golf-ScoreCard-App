@@ -8,6 +8,7 @@ import {
 } from 'reactstrap';
 import { deleteMessage } from '../helpers/data/messageData';
 import MessageForm from '../forms/MessageForm';
+// import { getUser } from '../helpers/data/userData';
 
 const MessageCard = ({
   user,
@@ -15,9 +16,11 @@ const MessageCard = ({
   message,
   timeStamp,
   uid,
+  // userFirebaseKey,
   setMessages
 }) => {
   const [editing, setEditing] = useState(false);
+  // const [username, setUsername] = useState({});
 
   const handleClick = (type) => {
     switch (type) {
@@ -33,12 +36,24 @@ const MessageCard = ({
     }
   };
 
+  // const userReactions = () => (
+  //   <>
+  //     <Button className="likeBtn"><img src={correctThumbsUp} alt="like button" /></Button>
+  //     <Button className="dislikeBtn"><img src={correctThumbsDown} alt="dislike button" /></Button>
+  //   </>
+  // );
+
+  // useEffect(() => {
+  //   getUser(userFirebaseKey).then((userObj) => setUsername(userObj));
+  // }, []);
+
   return (
     <>
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">{message}</CardTitle>
         <CardText type="number">Date: {timeStamp}</CardText>
         <CardText type="text">Player: {user.fullName}</CardText>
+        {/* {loggedUserKey === userFirebaseKey ? userCanEdit() : userReactions()} */}
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
           {editing ? 'CloseForm' : 'Edit Message'}
@@ -51,6 +66,7 @@ const MessageCard = ({
             message={message}
             timeStamp={timeStamp}
             uid={uid}
+            // userFirebaseKey={userFirebaseKey}
             setMessages={setMessages}
           />
         }
@@ -65,6 +81,8 @@ MessageCard.propTypes = {
   message: PropTypes.string,
   timeStamp: PropTypes.any,
   uid: PropTypes.string,
+  // userFirebaseKey: PropTypes.string,
+  // loggedUserKey: PropTypes.string.isRequired,
   setMessages: PropTypes.func
 };
 

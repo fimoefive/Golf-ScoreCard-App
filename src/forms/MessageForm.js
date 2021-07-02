@@ -14,13 +14,13 @@ const MessageForm = ({
   message,
   timeStamp,
   uid,
-  userFirebaseKey,
+  // userFirebaseKey,
   setMessages
 }) => {
   const [mess, setMessage] = useState({
     message: message || '',
     timeStamp: timeStamp || 'just now',
-    userFirebaseKey,
+    // userFirebaseKey,
     firebaseKey: firebaseKey || null,
     uid: uid || user.uid
   });
@@ -102,7 +102,7 @@ MessageForm.propTypes = {
   message: PropTypes.string,
   timeStamp: PropTypes.string,
   uid: PropTypes.string,
-  userFirebaseKey: PropTypes.string,
+  // userFirebaseKey: PropTypes.string,
   setMessages: PropTypes.func
 };
 
