@@ -67,7 +67,7 @@ const MessageForm = ({
             <Input
               name='message'
               id='message'
-              value={mess.message}
+              value={mess.value}
               type='text'
               placeholder='Enter Message'
               onChange={handleInputChange}
