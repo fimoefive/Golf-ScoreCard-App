@@ -4,7 +4,8 @@ import {
   Button,
   CardBody,
   CardText,
-  CardTitle
+  CardTitle,
+  Timestamp
 } from 'reactstrap';
 import { deleteMessage } from '../helpers/data/messageData';
 import MessageForm from '../forms/MessageForm';
@@ -53,6 +54,7 @@ const MessageCard = ({
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">{message}</CardTitle>
         <CardText type="number">Date: {timeStamp}</CardText>
+        <Timestamp relative date={Date} autoUpdate />
         <CardText type="text">Player: {user.fullName}</CardText>
         {/* {loggedUserKey === userFirebaseKey ? userCanEdit() : userReactions()} */}
         <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>

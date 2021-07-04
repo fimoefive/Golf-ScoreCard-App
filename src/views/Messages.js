@@ -39,6 +39,7 @@ function Messages({
             firebaseKey={messageInfo.firebaseKey}
             message={messageInfo.message}
             timeStamp={messageInfo.timeStamp}
+            date={Date}
             uid={messageInfo.uid}
             user={user}
             // loggedInUser={loggedInUser.firebaseKey}
