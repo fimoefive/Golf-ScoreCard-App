@@ -4,8 +4,7 @@ import {
   Button,
   CardBody,
   CardText,
-  CardTitle,
-  Timestamp
+  CardTitle
 } from 'reactstrap';
 import { deleteMessage } from '../helpers/data/messageData';
 import MessageForm from '../forms/MessageForm';
@@ -16,9 +15,11 @@ const MessageCard = ({
   firebaseKey,
   message,
   timeStamp,
+  // timestamp,
+  // date,
   uid,
-  // userFirebaseKey,
-  // loggedUserKey,
+  userFirebaseKey,
+  loggedUserKey,
   setMessages
 }) => {
   const [editing, setEditing] = useState(false);
@@ -38,26 +39,51 @@ const MessageCard = ({
     }
   };
 
-  // const userReactions = () => (
-  //   <>
-  //     <Button className="likeBtn"><img src={correctThumbsUp} alt="like button" /></Button>
-  //     <Button className="dislikeBtn"><img src={correctThumbsDown} alt="dislike button" /></Button>
-  //   </>
-  // );
+  const userCanEdit = () => (
+    <>
+      <Button color='info' onClick={() => handleClick('edit')}>
+        {editing ? 'Close' : 'Edit'}
+      </Button>
+      {
+        editing && <MessageForm
+          formTitle='Edit Message'
+          user={user}
+          firebaseKey={firebaseKey}
+          message={message}
+          timeStamp={timeStamp}
+          date={Date}
+          uid={uid}
+          userFirebaseKey={userFirebaseKey}
+          setMessages={setMessages}
+        />
+      }
+      <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
+    </>
+  );
+
+  const userReactions = () => (
+    <>
+      <Button className="likeBtn">Like</Button>
+      <Button className="dislikeBtn">DisLike</Button>
+    </>
+  );
 
   // useEffect(() => {
   //   getUser(userFirebaseKey).then((userObj) => setUsername(userObj));
   // }, []);
 
+  const timestamp = new Date();
+  const timeValue = timestamp.valueOf();
+
   return (
     <>
       <CardBody body="true" className="card text-center">
         <CardTitle tag="h5" type="text">{message}</CardTitle>
-        <CardText type="number">Date: {timeStamp}</CardText>
-        <Timestamp relative date={Date} autoUpdate />
+        <CardText type="number">Date: {timeValue}</CardText>
+        {/* <Timestamp relative date={Date} /> */}
         <CardText type="text">Player: {user.fullName}</CardText>
-        {/* {loggedUserKey === userFirebaseKey ? userCanEdit() : userReactions()} */}
-        <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
+        {loggedUserKey === userFirebaseKey ? userCanEdit() : userReactions()}
+        {/* <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
         <Button color="info" onClick={() => handleClick('edit')}>
           {editing ? 'CloseForm' : 'Edit Message'}
         </Button>
@@ -68,11 +94,12 @@ const MessageCard = ({
             firebaseKey={firebaseKey}
             message={message}
             timeStamp={timeStamp}
+            date={Date}
             uid={uid}
             // userFirebaseKey={userFirebaseKey}
             setMessages={setMessages}
           />
-        }
+        } */}
       </CardBody>
     </>
   );
@@ -83,9 +110,11 @@ MessageCard.propTypes = {
   firebaseKey: PropTypes.string.isRequired,
   message: PropTypes.string,
   timeStamp: PropTypes.any,
+  // timestamp: PropTypes.any,
+  // date: PropTypes.any,
   uid: PropTypes.string,
-  // userFirebaseKey: PropTypes.string,
-  // loggedUserKey: PropTypes.string.isRequired,
+  userFirebaseKey: PropTypes.string,
+  loggedUserKey: PropTypes.string,
   setMessages: PropTypes.func
 };
 

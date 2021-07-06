@@ -11,8 +11,25 @@ import './App.scss';
 
 function App() {
   const [user, setUser] = useState({});
+  const [loggedUser, setLoggedUser] = useState({});
   const [holes, setHoles] = useState([]);
   const [messages, setMessages] = useState([]);
+
+  const checkUser = (newUser, authed) => {
+    const checkStatus = Object.values(newUser);
+    if (checkStatus.length >= 1) {
+      const userArray = Object.values(newUser);
+      setLoggedUser(userArray[0]);
+    } else {
+      const newUserInfoObj = {
+        fullName: authed.displayName,
+        imageURL: authed.photoURL,
+        role: 'user',
+        uid: authed.uid,
+      };
+      createUser(newUserInfoObj).then((userResponse) => setLoggedUser(userResponse));
+    }
+  };
 
   const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
@@ -35,9 +52,10 @@ function App() {
             getUser(userInfoObj);
           }
         });
+        setUser(userInfoObj);
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         getMessages().then((messageArray) => setMessages(messageArray));
-        setUser(userInfoObj);
+        getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
       } else if (user || user === null) {
         setUser(false);
       }
@@ -55,6 +73,7 @@ function App() {
           setHoles={setHoles}
           messages={messages}
           setMessages={setMessages}
+          loggedUser={loggedUser}
         />
       </Router>
     </div>

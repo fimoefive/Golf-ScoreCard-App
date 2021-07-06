@@ -9,12 +9,11 @@ import Messages from '../views/Messages';
 
 function Routes({
   user,
-  games,
-  setGames,
   holes,
   setHoles,
   messages,
-  setMessages
+  setMessages,
+  loggedUser
 }) {
   return (
     <>
@@ -26,8 +25,6 @@ function Routes({
             path='/games'
             user={user}
             component={() => (<Games
-              games={games}
-              setGames={setGames}
               user={user}
             />)}
           />
@@ -52,6 +49,7 @@ function Routes({
             user={user}
             component={() => <Messages
               user={user}
+              loggedUser={loggedUser}
               messages={messages}
               setMessages={setMessages}
             />}
@@ -66,12 +64,11 @@ function Routes({
 
 Routes.propTypes = {
   user: PropTypes.any,
-  games: PropTypes.array,
-  setGames: PropTypes.func,
   holes: PropTypes.array,
   setHoles: PropTypes.func,
   messages: PropTypes.array,
-  setMessages: PropTypes.func
+  setMessages: PropTypes.func,
+  loggedUser: PropTypes.object
 };
 
 export default Routes;

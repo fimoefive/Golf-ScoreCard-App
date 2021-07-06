@@ -6,9 +6,9 @@ import MessageForm from '../forms/MessageForm';
 
 function Messages({
   user,
-  // loggedInUser,
   messages,
-  setMessages
+  setMessages,
+  loggedUser
 }) {
   const [showAddMessage, setAddMessage] = useState(false);
 
@@ -28,7 +28,7 @@ function Messages({
                 formTitle={'New Message'}
                 setMessages={setMessages}
                 user={user}
-              // userFirebaseKey={loggedInUser.firebaseKey}
+                userFirebaseKey={loggedUser.firebaseKey}
               />
             </div>
           }
@@ -39,10 +39,13 @@ function Messages({
             firebaseKey={messageInfo.firebaseKey}
             message={messageInfo.message}
             timeStamp={messageInfo.timeStamp}
-            date={Date}
+            timestamp={messageInfo.timestamp}
+            date={Date()}
             uid={messageInfo.uid}
             user={user}
-            // loggedInUser={loggedInUser.firebaseKey}
+            userFirebaseKey={messageInfo.userFirebaseKey}
+            // loggedUserKey={loggedUser.firebaseKey}
+            loggedUserKey={user.userFirebaseKey}
             setMessages={setMessages}
           />
         ))}
@@ -53,7 +56,7 @@ function Messages({
 
 Messages.propTypes = {
   user: PropTypes.any,
-  // loggedInUser: PropTypes.object,
+  loggedUser: PropTypes.object,
   messages: PropTypes.array,
   setMessages: PropTypes.func
 };
