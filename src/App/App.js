@@ -1,11 +1,11 @@
-import firebase from 'firebase/app';
 import 'firebase/auth';
+import firebase from 'firebase/app';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import { getHoles } from '../helpers/data/holeData';
 import { getMessages } from '../helpers/data/messageData';
-import { createUser, getUser, getUserUid } from '../helpers/data/userData';
+import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
 import './App.scss';
 
@@ -61,10 +61,11 @@ function App() {
           }
           // isMounted.current = true;
         });
-        setUser(userInfoObj);
+
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
         // getMessages().then((messageArray) => setMessages(messageArray));
         getMessages().then((response) => setMessages(response));
+        setUser(userInfoObj);
         // getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
       } else if (user || user === null) {
         setUser(false);
