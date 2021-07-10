@@ -1,0 +1,17 @@
+.message-container {
+  background-color: lightblue;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 300px;
+  margin: 10px 5px;
+  justify-content: center;
+}
+
+.messageCard {
+  background-color: lightblue;
+}

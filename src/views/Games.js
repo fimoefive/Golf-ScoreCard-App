@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 // import GameCard from '../components/GameCard';
 // import GameForm from '../forms/GameForm';
 import { getHoles } from '../helpers/data/holeData';
+import golfFlag from '../assets/golfFlag.jpeg';
+import '../styles/games.scss';
 
 function Games({
   user,
@@ -53,6 +55,7 @@ function Games({
         <h2>Player Name: {user.fullName}</h2>
         <h2>Player Average: {playerAverage.toFixed(2)}</h2>
         {/* <image src="{user.profileImage}"></image> */}
+        <img src={golfFlag} alt="golf flag" />
       </div>
     </>
   );

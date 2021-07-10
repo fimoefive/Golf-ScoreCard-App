@@ -13,7 +13,7 @@ function Routes({
   setHoles,
   messages,
   setMessages,
-  loggedUser
+  // loggedInUser
 }) {
   return (
     <>
@@ -46,12 +46,11 @@ function Routes({
           <Route
             exact
             path='/messages'
-            user={user}
             component={() => <Messages
               user={user}
-              loggedUser={loggedUser}
               messages={messages}
               setMessages={setMessages}
+            // loggedInUser={loggedInUser}
             />}
           />
 
@@ -68,7 +67,7 @@ Routes.propTypes = {
   setHoles: PropTypes.func,
   messages: PropTypes.array,
   setMessages: PropTypes.func,
-  loggedUser: PropTypes.object
+  // loggedInUser: PropTypes.object.isRequired
 };
 
 export default Routes;

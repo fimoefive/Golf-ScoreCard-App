@@ -1,35 +1,43 @@
-// import firebase from 'firebase/auth';
 import firebase from 'firebase/app';
+import 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import { getHoles } from '../helpers/data/holeData';
 import { getMessages } from '../helpers/data/messageData';
+import { createUser, getUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
 import './App.scss';
 
 function App() {
-  const [user, setUser] = useState({});
-  const [loggedUser, setLoggedUser] = useState({});
+  const [user, setUser] = useState(null);
+  // const [loggedInUser, setLoggedUser] = useState({});
   const [holes, setHoles] = useState([]);
   const [messages, setMessages] = useState([]);
+  // const isMounted = useRef(false);
 
-  const checkUser = (newUser, authed) => {
-    const checkStatus = Object.values(newUser);
-    if (checkStatus.length >= 1) {
-      const userArray = Object.values(newUser);
-      setLoggedUser(userArray[0]);
-    } else {
-      const newUserInfoObj = {
-        fullName: authed.displayName,
-        imageURL: authed.photoURL,
-        role: 'user',
-        uid: authed.uid,
-      };
-      createUser(newUserInfoObj).then((userResponse) => setLoggedUser(userResponse));
-    }
-  };
+  // useEffect(() => {
+  //   isMounted.current = true;
+  //   return () => {
+  //     isMounted.current = false;
+  //   };
+  // }, []);
+
+  // const checkUser = (newUser, authed) => {
+  //   const checkStatus = Object.values(newUser);
+  //   if (checkStatus.length >= 1) {
+  //     const userArray = Object.values(newUser);
+  //     setLoggedUser(userArray[0]);
+  //   } else {
+  //     const newUserInfoObj = {
+  //       fullName: authed.displayName,
+  //       profileImage: authed.photoURL,
+  //       role: 'user',
+  //       uid: authed.uid,
+  //     };
+  //     createUser(newUserInfoObj).then((userResponse) => setLoggedUser(userResponse));
+  //   }
+  // };
 
   const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
@@ -51,11 +59,13 @@ function App() {
             getLoggedInUser(userInfoObj);
             getUser(userInfoObj);
           }
+          // isMounted.current = true;
         });
         setUser(userInfoObj);
         getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
-        getMessages().then((messageArray) => setMessages(messageArray));
-        getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
+        // getMessages().then((messageArray) => setMessages(messageArray));
+        getMessages().then((response) => setMessages(response));
+        // getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
       } else if (user || user === null) {
         setUser(false);
       }
@@ -73,7 +83,7 @@ function App() {
           setHoles={setHoles}
           messages={messages}
           setMessages={setMessages}
-          loggedUser={loggedUser}
+        // loggedInUser={loggedInUser}
         />
       </Router>
     </div>
