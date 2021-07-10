@@ -13,7 +13,7 @@ function Routes({
   setHoles,
   messages,
   setMessages,
-  // loggedInUser
+  loggedInUser
 }) {
   return (
     <>
@@ -50,7 +50,7 @@ function Routes({
               user={user}
               messages={messages}
               setMessages={setMessages}
-            // loggedInUser={loggedInUser}
+              loggedInUser={loggedInUser}
             />}
           />
 
@@ -67,7 +67,7 @@ Routes.propTypes = {
   setHoles: PropTypes.func,
   messages: PropTypes.array,
   setMessages: PropTypes.func,
-  // loggedInUser: PropTypes.object.isRequired
+  loggedInUser: PropTypes.object.isRequired
 };
 
 export default Routes;

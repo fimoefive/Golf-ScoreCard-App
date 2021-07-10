@@ -1,4 +1,4 @@
-import 'firebase/auth';
+// import 'firebase/auth';
 import firebase from 'firebase/app';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -10,68 +10,97 @@ import Routes from '../helpers/Routes';
 import './App.scss';
 
 function App() {
-  const [user, setUser] = useState(null);
-  // const [loggedInUser, setLoggedUser] = useState({});
+  const [user, setUser] = useState({});
+  const [admin, setAdmin] = useState(null);
+  const [loggedInUser, setLoggedUser] = useState({});
   const [holes, setHoles] = useState([]);
   const [messages, setMessages] = useState([]);
-  // const isMounted = useRef(false);
 
-  // useEffect(() => {
-  //   isMounted.current = true;
-  //   return () => {
-  //     isMounted.current = false;
-  //   };
-  // }, []);
-
-  // const checkUser = (newUser, authed) => {
-  //   const checkStatus = Object.values(newUser);
-  //   if (checkStatus.length >= 1) {
-  //     const userArray = Object.values(newUser);
-  //     setLoggedUser(userArray[0]);
-  //   } else {
-  //     const newUserInfoObj = {
-  //       fullName: authed.displayName,
-  //       profileImage: authed.photoURL,
-  //       role: 'user',
-  //       uid: authed.uid,
-  //     };
-  //     createUser(newUserInfoObj).then((userResponse) => setLoggedUser(userResponse));
-  //   }
-  // };
+  const checkUser = (newUser, authed) => {
+    const checkStatus = Object.values(newUser);
+    if (checkStatus.length >= 1) {
+      const userArray = Object.values(newUser);
+      setLoggedUser(userArray[0]);
+    } else {
+      const newUserInfoObj = {
+        fullName: authed.displayName,
+        profileImage: authed.photoURL,
+        role: 'user',
+        uid: authed.uid,
+      };
+      createUser(newUserInfoObj).then((userResponse) => setLoggedUser(userResponse));
+    }
+  };
 
   const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged((authed) => {
+  //     if (authed) {
+  //       const userInfoObj = {
+  //         email: authed.email,
+  //         fullName: authed.displayName,
+  //         profileImage: authed.photoURL,
+  //         uid: authed.uid,
+  //         user: authed.email.split('@')[0]
+  //       };
+  //       setUser(userInfoObj);
+  //       getUserUid(userInfoObj).then((response) => {
+  //         // getUserUid(authed.uid).then((response) => {
+  //         if (Object.values(response.data).length === 0) {
+  //           createUser(userInfoObj).then((resp) => setUser(resp));
+  //           getLoggedInUser(userInfoObj);
+  //           getUser(userInfoObj);
+  //         }
+  //       });
+
+  //       getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
+  //       // getMessages().then((messageArray) => setMessages(messageArray));
+  //       getMessages().then((response) => setMessages(response));
+  //       setUser(userInfoObj);
+  //       getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
+  //     } else if (user || user === null) {
+  //       setUser(false);
+  //       setAdmin(false);
+  //     }
+  //   });
+  // }, []);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
         const userInfoObj = {
-          email: authed.email,
           fullName: authed.displayName,
           profileImage: authed.photoURL,
           uid: authed.uid,
-          user: authed.email.split('@')[0]
+          user: authed.email.split('@gmail.com')[0]
         };
-        setUser(userInfoObj);
-        getUserUid(userInfoObj).then((response) => {
-          // getUserUid(authed.uid).then((response) => {
+        getUserUid(authed.uid).then((response) => {
           if (Object.values(response.data).length === 0) {
+            userInfoObj.adminAccess = false;
             createUser(userInfoObj).then((resp) => setUser(resp));
+          } if (Object.values(response.data)[0].adminAccess === true) {
+            userInfoObj.adminAccess = true;
+            setUser(userInfoObj);
+            setAdmin(userInfoObj);
             getLoggedInUser(userInfoObj);
             getUser(userInfoObj);
-          }
-          // isMounted.current = true;
-        });
 
-        getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
-        // getMessages().then((messageArray) => setMessages(messageArray));
-        getMessages().then((response) => setMessages(response));
-        setUser(userInfoObj);
-        // getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
+            getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
+            getMessages().then((messageArray) => setMessages(messageArray));
+            setUser(userInfoObj);
+            getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
+          } if (Object.values(response.data)[0].adminAccess === false) {
+            userInfoObj.adminAccess = false;
+            setUser(userInfoObj);
+          }
+        });
       } else if (user || user === null) {
         setUser(false);
+        setAdmin(false);
       }
     });
   }, []);
+  console.warn(user, admin);
 
   return (
     <div className='App'>
@@ -84,7 +113,8 @@ function App() {
           setHoles={setHoles}
           messages={messages}
           setMessages={setMessages}
-        // loggedInUser={loggedInUser}
+          loggedInUser={loggedInUser}
+          admin={admin}
         />
       </Router>
     </div>
