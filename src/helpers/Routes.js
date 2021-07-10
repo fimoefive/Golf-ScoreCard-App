@@ -3,19 +3,17 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import Main from '../views/MainPage';
 import Games from '../views/Games';
-// import SingleGame from '../views/SingleGame';
 import Holes from '../views/Holes';
 import SingleHole from '../views/SingleHole';
 import Messages from '../views/Messages';
 
 function Routes({
   user,
-  games,
-  setGames,
   holes,
   setHoles,
   messages,
-  setMessages
+  setMessages,
+  loggedInUser
 }) {
   return (
     <>
@@ -27,17 +25,9 @@ function Routes({
             path='/games'
             user={user}
             component={() => (<Games
-              games={games}
-              setGames={setGames}
               user={user}
             />)}
           />
-          {/*
-          <Route
-            user={user}
-            path='/games/:gameFirebaseKey'
-            component={() => <SingleGame user={user} />}
-          /> */}
           <Route
             exact
             path='/holes'
@@ -56,11 +46,11 @@ function Routes({
           <Route
             exact
             path='/messages'
-            user={user}
             component={() => <Messages
               user={user}
               messages={messages}
               setMessages={setMessages}
+              loggedInUser={loggedInUser}
             />}
           />
 
@@ -73,12 +63,11 @@ function Routes({
 
 Routes.propTypes = {
   user: PropTypes.any,
-  games: PropTypes.array,
-  setGames: PropTypes.func,
   holes: PropTypes.array,
   setHoles: PropTypes.func,
   messages: PropTypes.array,
-  setMessages: PropTypes.func
+  setMessages: PropTypes.func,
+  loggedInUser: PropTypes.object.isRequired
 };
 
 export default Routes;

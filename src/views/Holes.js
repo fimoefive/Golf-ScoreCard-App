@@ -84,7 +84,6 @@ function Holes({
             total={total(holeInfo)}
             avg={avg(holeInfo)}
             user={user}
-            holes={holes}
             setHoles={setHoles}
           />
         ))}

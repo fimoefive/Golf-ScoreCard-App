@@ -9,6 +9,12 @@ const getUser = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getUsers = (userFirebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/user/${userFirebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const getUserUid = (user) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/user.json?orderBy="uid"&equalTo="${user.uid}"`)
     .then((response) => resolve(response))
@@ -18,7 +24,7 @@ const getUserUid = (user) => new Promise((resolve, reject) => {
 const createUser = (userObject) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/user.json`, userObject)
     .then((response) => {
-      const body = { firebaseKey: response.data.name };
+      const body = { userFirebaseKey: response.data.name };
       axios.patch(`${dbUrl}/user/${response.data.name}.json`, body)
         .then(() => {
           getUser().then((usersArray) => resolve(usersArray));
@@ -28,6 +34,7 @@ const createUser = (userObject) => new Promise((resolve, reject) => {
 
 export {
   getUser,
+  getUsers,
   getUserUid,
   createUser
 };

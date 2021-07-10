@@ -33,14 +33,8 @@ const updateGame = (games, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSingleGame = (gameFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/games/${gameFirebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
-});
-
 export {
   getGames, addGame,
-  deleteGame, updateGame,
-  getSingleGame
+  deleteGame,
+  updateGame
 };

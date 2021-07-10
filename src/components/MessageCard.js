@@ -1,78 +1,188 @@
+// import firebase from 'firebase/app';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import {
   Button,
   CardBody,
   CardText,
   CardTitle
 } from 'reactstrap';
-import { deleteMessage } from '../helpers/data/messageData';
+import { deleteMessage, getMessages } from '../helpers/data/messageData';
 import MessageForm from '../forms/MessageForm';
+// import { getUsers } from '../helpers/data/userData';
+import '../styles/messages.scss';
 
 const MessageCard = ({
   user,
-  // messages,
   firebaseKey,
   message,
-  timestamp,
+  timeStamp,
+  // timestamp,
+  // date,
   uid,
-  setMessages
+  setMessages,
+  userFirebaseKey,
 }) => {
   const [editing, setEditing] = useState(false);
-  const history = useHistory();
+  // const [username, setUsername] = useState({});
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
         deleteMessage(firebaseKey, user.uid)
+          .then(setMessages)
+          .then(() => getMessages(user.uid))
           .then(setMessages);
         break;
       case 'edit':
+        console.warn(user);
         setEditing((prevState) => !prevState);
-        break;
-      case 'view':
-        history.push(`/messages/${firebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
     }
   };
 
+  // useEffect(() => {
+  //   getUsers(userFirebaseKey).then((userInfoObj) => setUsername(userInfoObj));
+  // }, []);
+
+  // const getLoggedInUser = () => firebase.auth().currentUser?.userFirebaseKey;
+  // const isUserLoggedIn = firebase.auth().currentUser;
+
+  const timestamp = new Date().toISOString().slice(0, 10);
+  // const timeValue = timestamp.valueOf();
+
   return (
     <>
-      <CardBody body="true" className="card text-center">
-        <CardTitle tag="h5" type="text">Message: {message}</CardTitle>
-        <CardText type="number">Date: {timestamp}</CardText>
-        <Button color="danger" onClick={() => handleClick('delete')}>Delete Message</Button>
-        <Button color="info" onClick={() => handleClick('edit')}>
-          {editing ? 'CloseForm' : 'Edit Message'}
-        </Button>
-        {
-          editing && <MessageForm
+      <div className="messageCard">
+        <CardBody body="true" className="card text-center">
+          <CardTitle tag="h5" type="text">{message}</CardTitle>
+          <CardText type="number">Date: {timestamp}</CardText>
+          <CardText type="text">Player: {user.fullName}</CardText>
+          {/* <Timestamp relative date={Date} /> */}
+          {/* <CardText type="text">Player: {user.fullName}</CardText> */}
+          {/* {loggedUserKey === userFirebaseKey ? userCanEdit() : userReactions()} */}
+          {/* {isUserLoggedIn ? '' : */}
+          {user
+            ? <Button color='info' user={user} onClick={() => handleClick('edit')}>
+              {editing ? 'Close' : 'Edit Message'}
+            </Button> : ''}
+          {editing && <MessageForm
             formTitle='Edit Message'
             user={user}
             firebaseKey={firebaseKey}
             message={message}
-            timestamp={timestamp}
+            timeStamp={timeStamp}
+            date={Date}
             uid={uid}
-            // messages={messages}
             setMessages={setMessages}
+            userFirebaseKey={userFirebaseKey}
           />
-        }
-      </CardBody>
+          }
+          {user
+            ? <Button color='danger' user={user} onClick={() => handleClick('delete')}>Delete</Button>
+            : ''}
+
+        </CardBody>
+      </div>
     </>
   );
 };
 
 MessageCard.propTypes = {
   user: PropTypes.any,
-  // messages: PropTypes.array,
   firebaseKey: PropTypes.string.isRequired,
-  message: PropTypes.string,
-  timestamp: PropTypes.string,
+  message: PropTypes.string.isRequired,
+  timeStamp: PropTypes.string,
+  // timestamp: PropTypes.any,
+  // date: PropTypes.any,
   uid: PropTypes.string,
-  setMessages: PropTypes.func
+  setMessages: PropTypes.func,
+  userFirebaseKey: PropTypes.string,
+  loggedUserKey: PropTypes.string,
+
 };
+
+// function MessageCard({
+//   user,
+//   message,
+//   timeStamp,
+//   firebaseKey,
+//   uid,
+//   setMessages,
+//   userID,
+//   // loggedUserKey
+// }) {
+//   const [editing, setEditing] = useState(false);
+//   const [username, setUsername] = useState({});
+
+//   const handleClick = (type) => {
+//     switch (type) {
+//       case 'edit':
+//         setEditing((prevState) => !prevState);
+//         break;
+//       case 'delete':
+//         deleteMessage(firebaseKey).then(setMessages);
+//         break;
+//       default: console.warn('nothing selected');
+//     }
+//   };
+
+//   const userCanEdit = () => (
+//     <>
+//       <Button color='info' onClick={() => handleClick('edit')}>
+//         {editing ? 'Close' : 'Edit'}
+//       </Button>
+//       {
+//         editing && <MessageForm
+//           user={user}
+//           setMessages={setMessages}
+//           firebaseKey={firebaseKey}
+//           uid={uid}
+//           timeStamp={timeStamp}
+//           message={message}
+//           userID={userID}
+//           formTitle={'Edit Message'}
+//         />
+//       }
+//       <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
+//     </>
+//   );
+
+//   const userReactions = () => (
+//     <>
+//       <Button className="likeBtn">like</Button>
+//       <Button className="dislikeBtn">dislike</Button>
+//     </>
+//   );
+
+//   useEffect(() => {
+//     getUsers(userID).then((userObj) => setUsername(userObj));
+//     // getUser(uid).then((userObj) => setUsername(userObj));
+//   }, []);
+
+//   return (
+//     <div className="messageCard">
+//       <Card body className="message-center">
+//         <CardTitle tag="h3">{username.fullName}</CardTitle>
+//         <CardText>{message}</CardText>
+//         <CardText>{timeStamp}</CardText>
+//         {user === userID ? userCanEdit() : userReactions()}
+//       </Card>
+//     </div>
+//   );
+// }
+
+// MessageCard.propTypes = {
+//   user: PropTypes.any,
+//   message: PropTypes.string.isRequired,
+//   timeStamp: PropTypes.any.isRequired,
+//   firebaseKey: PropTypes.string.isRequired,
+//   uid: PropTypes.string.isRequired,
+//   setMessages: PropTypes.func.isRequired,
+//   userID: PropTypes.string.isRequired,
+//   // loggedUserKey: PropTypes.string
+// };
 
 export default MessageCard;
