@@ -7,8 +7,8 @@ import { getHoles } from '../helpers/data/holeData';
 import { getMessages } from '../helpers/data/messageData';
 import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
-import './App.scss';
 import golfLogo from '../assets/golfLogo.jpeg';
+import './App.scss';
 
 function App() {
   const [user, setUser] = useState({});
@@ -61,46 +61,9 @@ function App() {
         getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
       } else if (user || user === null) {
         setUser(false);
-        // setAdmin(false);
       }
     });
   }, []);
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged((authed) => {
-  //     if (authed) {
-  //       const userInfoObj = {
-  //         fullName: authed.displayName,
-  //         profileImage: authed.photoURL,
-  //         uid: authed.uid,
-  //         user: authed.email.split('@gmail.com')[0]
-  //       };
-  //       getUserUid(authed.uid).then((response) => {
-  //         if (Object.values(response.data).length === 0) {
-  //           userInfoObj.adminAccess = false;
-  //           createUser(userInfoObj).then((resp) => setUser(resp));
-  //         } if (Object.values(response.data)[0].adminAccess === true) {
-  //           userInfoObj.adminAccess = true;
-  //           setUser(userInfoObj);
-  //           setAdmin(userInfoObj);
-  //           getLoggedInUser(userInfoObj);
-  //           getUser(userInfoObj);
-
-  //           getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
-  //           getMessages().then((messageArray) => setMessages(messageArray));
-  //           setUser(userInfoObj);
-  //           getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
-  //         } if (Object.values(response.data)[0].adminAccess === false) {
-  //           userInfoObj.adminAccess = false;
-  //           setUser(userInfoObj);
-  //         }
-  //       });
-  //     } else if (user || user === null) {
-  //       setUser(false);
-  //       setAdmin(false);
-  //     }
-  //   });
-  // }, []);
-  // console.warn(user, admin);
 
   return (
     <div className='App'>
