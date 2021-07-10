@@ -7,11 +7,19 @@
 }
 
 .card {
+  background-color: rgb(174, 174, 174);
+  border-style: double;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   margin: 10px 5px;
-  justify-content: center;
 }
 
 .messageCard {
+  max-width: min-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: lightblue;
+  // width: 150px;
 }

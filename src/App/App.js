@@ -8,10 +8,10 @@ import { getMessages } from '../helpers/data/messageData';
 import { getUser, createUser, getUserUid } from '../helpers/data/userData';
 import Routes from '../helpers/Routes';
 import './App.scss';
+import golfLogo from '../assets/golfLogo.jpeg';
 
 function App() {
   const [user, setUser] = useState({});
-  const [admin, setAdmin] = useState(null);
   const [loggedInUser, setLoggedUser] = useState({});
   const [holes, setHoles] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -34,77 +34,78 @@ function App() {
 
   const getLoggedInUser = () => firebase.auth().currentUser?.uid;
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((authed) => {
+      if (authed) {
+        const userInfoObj = {
+          email: authed.email,
+          fullName: authed.displayName,
+          profileImage: authed.photoURL,
+          uid: authed.uid,
+          user: authed.email.split('@')[0]
+        };
+        setUser(userInfoObj);
+        getUserUid(userInfoObj).then((response) => {
+          // getUserUid(authed.uid).then((response) => {
+          if (Object.values(response.data).length === 0) {
+            createUser(userInfoObj).then((resp) => setUser(resp));
+            getLoggedInUser(userInfoObj);
+            getUser(userInfoObj);
+          }
+        });
+
+        getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
+        // getMessages().then((messageArray) => setMessages(messageArray));
+        getMessages().then((response) => setMessages(response));
+        setUser(userInfoObj);
+        getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
+      } else if (user || user === null) {
+        setUser(false);
+        // setAdmin(false);
+      }
+    });
+  }, []);
   // useEffect(() => {
   //   firebase.auth().onAuthStateChanged((authed) => {
   //     if (authed) {
   //       const userInfoObj = {
-  //         email: authed.email,
   //         fullName: authed.displayName,
   //         profileImage: authed.photoURL,
   //         uid: authed.uid,
-  //         user: authed.email.split('@')[0]
+  //         user: authed.email.split('@gmail.com')[0]
   //       };
-  //       setUser(userInfoObj);
-  //       getUserUid(userInfoObj).then((response) => {
-  //         // getUserUid(authed.uid).then((response) => {
+  //       getUserUid(authed.uid).then((response) => {
   //         if (Object.values(response.data).length === 0) {
+  //           userInfoObj.adminAccess = false;
   //           createUser(userInfoObj).then((resp) => setUser(resp));
+  //         } if (Object.values(response.data)[0].adminAccess === true) {
+  //           userInfoObj.adminAccess = true;
+  //           setUser(userInfoObj);
+  //           setAdmin(userInfoObj);
   //           getLoggedInUser(userInfoObj);
   //           getUser(userInfoObj);
+
+  //           getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
+  //           getMessages().then((messageArray) => setMessages(messageArray));
+  //           setUser(userInfoObj);
+  //           getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
+  //         } if (Object.values(response.data)[0].adminAccess === false) {
+  //           userInfoObj.adminAccess = false;
+  //           setUser(userInfoObj);
   //         }
   //       });
-
-  //       getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
-  //       // getMessages().then((messageArray) => setMessages(messageArray));
-  //       getMessages().then((response) => setMessages(response));
-  //       setUser(userInfoObj);
-  //       getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
   //     } else if (user || user === null) {
   //       setUser(false);
   //       setAdmin(false);
   //     }
   //   });
   // }, []);
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((authed) => {
-      if (authed) {
-        const userInfoObj = {
-          fullName: authed.displayName,
-          profileImage: authed.photoURL,
-          uid: authed.uid,
-          user: authed.email.split('@gmail.com')[0]
-        };
-        getUserUid(authed.uid).then((response) => {
-          if (Object.values(response.data).length === 0) {
-            userInfoObj.adminAccess = false;
-            createUser(userInfoObj).then((resp) => setUser(resp));
-          } if (Object.values(response.data)[0].adminAccess === true) {
-            userInfoObj.adminAccess = true;
-            setUser(userInfoObj);
-            setAdmin(userInfoObj);
-            getLoggedInUser(userInfoObj);
-            getUser(userInfoObj);
-
-            getHoles(authed.uid).then((gamesArray) => setHoles(gamesArray));
-            getMessages().then((messageArray) => setMessages(messageArray));
-            setUser(userInfoObj);
-            getUserUid(authed.uid).then((singleUser) => checkUser(singleUser, authed));
-          } if (Object.values(response.data)[0].adminAccess === false) {
-            userInfoObj.adminAccess = false;
-            setUser(userInfoObj);
-          }
-        });
-      } else if (user || user === null) {
-        setUser(false);
-        setAdmin(false);
-      }
-    });
-  }, []);
-  console.warn(user, admin);
+  // console.warn(user, admin);
 
   return (
     <div className='App'>
       <h2>GOLF APP</h2>
+      <image src={golfLogo} alt="golf Flag" />
 
       <Router>
         <NavBar user={user} />
@@ -114,7 +115,6 @@ function App() {
           messages={messages}
           setMessages={setMessages}
           loggedInUser={loggedInUser}
-          admin={admin}
         />
       </Router>
     </div>

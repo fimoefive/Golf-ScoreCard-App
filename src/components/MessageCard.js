@@ -59,7 +59,7 @@ const MessageCard = ({
         <CardBody body="true" className="card text-center">
           <CardTitle tag="h5" type="text">{message}</CardTitle>
           <CardText type="number">Date: {timestamp}</CardText>
-          {/* <CardText type="text">Player: {username.fullName}</CardText> */}
+          <CardText type="text">Player: {user.fullName}</CardText>
           {/* <Timestamp relative date={Date} /> */}
           {/* <CardText type="text">Player: {user.fullName}</CardText> */}
           {/* {loggedUserKey === userFirebaseKey ? userCanEdit() : userReactions()} */}
